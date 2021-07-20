@@ -12,18 +12,18 @@
   <div id="container" data-background="res/img/bg.jpg">
     <div class="box box-sm">
       <div class="logo">
-      <p align="center"><img src="assets/logo.png" width="30%"></p>
+      <p align="center"><img src="assets/img/logos/logo.png" width="30%"></p>
         <h1 style="font-size:18pt;letter-spacing:-3px;" align="center">SISTEM INFORMASI <br>PENGARSIPAN SURAT</h1>
       </div>
       <div class="form">
-        <form action="proseslogin.php" method="POST">
+        <form action="log_process.php" method="POST">
           <div class="form-group">
             <span class="form-icon"><i class="fa fa-user"></i></span>
-            <input type="text" class="form-input" placeholder="username" name="username" autofocus="">
+            <input type="text" class="form-input" placeholder="username" name="username" autofocus="" required>
           </div>
           <div class="form-group">
             <span class="form-icon"><i class="fa fa-lock"></i></span>
-            <input type="password" class="form-input" placeholder="password" name="password">
+            <input type="password" class="form-input" placeholder="password" name="password" required>
           </div>
           <button class="btn btn-warning btn-block">Sign in</button>
           
