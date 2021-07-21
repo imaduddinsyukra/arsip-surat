@@ -10,6 +10,7 @@ switch ($route) {
     case '':
         include "views/beranda.php";
       break;
+    // Surat Masuk
     case 'data-surat-masuk':
         include "views/data-surat-masuk.php";
       break;
@@ -25,6 +26,13 @@ switch ($route) {
     case 'aksi-surat-masuk':
         include "controllers/suratMasukController.php";
       break;
+    // Disposisi
+    case 'data-disposisi':
+      include "views/data-disposisi.php";
+    break;
+    case 'tambah-disposisi':
+      include "views/data-disposisi-tambah.php";
+    break;
 
     default:
         include "views/not-found.php";
