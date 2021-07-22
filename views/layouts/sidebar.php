@@ -64,13 +64,13 @@
             </ul>
           </li>  -->
           <li class="nav-item">
-            <a href="{{url('')}}" class="nav-link">
+            <a href="admin.php" class="nav-link">
               <i class="nav-icon fas fa-home"></i>
               <p>Beranda</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{url('surat-masuk')}}" class="nav-link">
+            <a href="admin.php?part=data-surat-masuk" class="nav-link">
               <i class="nav-icon fas fa-envelope"></i>
               <p>Surat Masuk</p>
             </a>

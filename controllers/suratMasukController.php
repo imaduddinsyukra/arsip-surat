@@ -103,6 +103,7 @@
         $folder = $base_url."/assets/files/$file";
         $folder_move = "./assets/files/$file";
         
+        $pesan="";
         if($file_name!=''){
             //check apakah type file sudah sesuai
             if(!in_array($extensi,$file_type)){
@@ -117,11 +118,16 @@
         
             if($eror == true){
             ?>
-                <script language="JavaScript">
+                <!-- <script language="JavaScript">
                     var id_surat = "<?= $id_surat_masuk?>";
-                    var pesan = "<?= $pesan;?>";
+                    
                     alert(pesan);
                     document.location="./admin.php?part=ubah-surat-masuk&id_surat_masuk=" + id_surat
+                </script> -->
+                <script language="JavaScript">
+                    var pesan = "<?= $pesan;?>";
+                    alert(pesan);
+                    document.location="./admin.php?part=data-surat-masuk"
                 </script>
             <?php
             }
@@ -194,11 +200,15 @@
             }
             else{
             ?>
-                <script language="JavaScript">
+                    <script language="JavaScript">
+                        alert("Data Gagal Diubah");
+                        document.location="./admin.php?part=data-surat-masuk"
+                    </script>
+                <!-- <script language="JavaScript">
                     var id_surat = "<?= $id_surat_masuk?>";
                     alert("Data Gagal Diubah");
                     document.location="./admin.php?part=ubah-surat-masuk&id_surat_masuk=" + id_surat
-                </script>
+                </script> -->
             <?php
             }
         }

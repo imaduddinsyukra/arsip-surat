@@ -12,16 +12,16 @@ switch ($route) {
       break;
     // Surat Masuk
     case 'data-surat-masuk':
-        include "views/data-surat-masuk.php";
+        include "views/surat-masuk/data-surat-masuk.php";
       break;
     case 'tambah-surat-masuk':
-        include "views/data-surat-masuk-tambah.php";
+        include "views/surat-masuk/data-surat-masuk-tambah.php";
       break;
     case 'ubah-surat-masuk':
-        include "views/data-surat-masuk-ubah.php";
+        include "views/surat-masuk/data-surat-masuk-ubah.php";
       break;
     case 'detail-surat-masuk':
-        include "views/data-surat-masuk-detail.php";
+        include "views/surat-masuk/data-surat-masuk-detail.php";
       break;
     case 'aksi-surat-masuk':
         include "controllers/suratMasukController.php";

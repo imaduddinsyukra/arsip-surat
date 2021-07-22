@@ -16,6 +16,10 @@
   <link rel="stylesheet" href="assets/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="assets/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
   <link rel="stylesheet" href="assets/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+
+  <!-- DROPIFY -->
+  <link rel="stylesheet" href="assets/acc/dropify/dist/css/dropify.min.css">
+
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -116,8 +120,70 @@
 <script src="assets/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<script>
+    $(function () {
+      $("#example1").DataTable({
+        "responsive": true, "lengthChange": false, "autoWidth": false,
+        "buttons": ["excel", "pdf"]
+      }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+      $('#example2').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+      });
+    });
+  </script>
 <!-- Page specific script -->
 <!-- @stack('page-spesific-script') -->
+
+  <!-- DROPIFY -->
+  <script src="assets/acc/dropify/dist/js/dropify.min.js"></script>
+  <script>
+      $(document).ready(function(){
+          // Basic
+          $('.dropify').dropify();
+
+          // Translated
+          $('.dropify-fr').dropify({
+              messages: {
+                  default: 'Glissez-déposez un fichier ici ou cliquez',
+                  replace: 'Glissez-déposez un fichier ou cliquez pour remplacer',
+                  remove:  'Supprimer',
+                  error:   'Désolé, le fichier trop volumineux'
+              }
+          });
+
+          // Used events
+          var drEvent = $('#input-file-events').dropify();
+
+          drEvent.on('dropify.beforeClear', function(event, element){
+              return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
+          });
+
+          drEvent.on('dropify.afterClear', function(event, element){
+              alert('File deleted');
+          });
+
+          drEvent.on('dropify.errors', function(event, element){
+              console.log('Has Errors');
+          });
+
+          var drDestroy = $('#input-file-to-destroy').dropify();
+          drDestroy = drDestroy.data('dropify')
+          $('#toggleDropify').on('click', function(e){
+              e.preventDefault();
+              if (drDestroy.isDropified()) {
+                  drDestroy.destroy();
+              } else {
+                  drDestroy.init();
+              }
+          })
+      });
+  </script>
 
 </body>
 </html>
