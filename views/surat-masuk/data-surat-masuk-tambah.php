@@ -39,6 +39,20 @@
     </div>
 
     <div class="form-group mb-4">
+        <label>Jenis Surat *</label>
+        <select class="form-control" name="id_jenis_surat" required>
+            <option value="0" selected>Pilih Jenis Surat</option>
+            <?php
+              $sqll = "select * from tbl_jenis_surat where keterangan='Aktif' order by jenis_surat";
+              $resultt = mysql_query($sqll);
+              while($dt_jenis = mysql_fetch_array($resultt)){
+            ?> 
+              <option value="<?= $dt_jenis['id_jenis_surat'];?>"><?= $dt_jenis['jenis_surat'];?></option>
+            <?php } ?>
+        </select>
+    </div>
+
+    <div class="form-group mb-4">
         <label>Tanggal Diterima *</label>
         <input type='date' name='tgl_diterima' class="form-control" required>
     </div>

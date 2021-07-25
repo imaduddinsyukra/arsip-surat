@@ -2,86 +2,65 @@
     date_default_timezone_set('Asia/Jakarta');
     $base_url = $_SERVER['DOCUMENT_ROOT'].dirname($_SERVER['PHP_SELF']);
     
-    $uuid = uniqid().'SrTmSk'.rand();
-    $pengirim = $_POST['pengirim'];
+    $kode = $_POST['kd'];
+    $id_surat = $_POST['id_surat'];
+    $uuid = uniqid().'DsPsS'.rand();
     $no_surat = $_POST['no_surat'];
-    $tgl_surat = $_POST['tgl_surat'];
-    $tgl_diterima = $_POST['tgl_diterima'];
-    $keterangan = $_POST['keterangan'];
+    $kategori_surat = $_POST['kategori_surat'];
+    $tujuan_disposisi = $_POST['tujuan_disposisi'];
+    $isi_disposisi = $_POST['isi_disposisi'];
+    $no_agenda = $_POST['no_agenda'];
+    $sifat = $_POST['sifat'];
+    $catatan = $_POST['catatan'];
     $id_user = $_POST['id_user'];
     $created_at = date("Y-m-d H:i:s");
     $updated_at = date("Y-m-d H:i:s");
-
-    //Buat konfigurasi upload
-    //Folder tujuan upload file
-    $eror		= false;
-    $folder		= 'assets/files';
-    //type file yang bisa diupload
-    $file_type	= array('doc','docx');
-    //tukuran maximum file yang dapat diupload
-    $max_size	= 2000000; // 2MB
-
+    
+    
     if($_POST['parm']=='add_bos')
     {
-    	//Mulai memorises data   
-    	$nama_file	= $_FILES['data_upload']['tmp_name'];
-    	$file_name	= $_FILES['data_upload']['name'];
-		
-    	$file_size	= $_FILES['data_upload']['size'];
-    	//cari extensi file dengan menggunakan fungsi explode
-    	$explode	= explode('.',$file_name);
-    	$extensi	= $explode[count($explode)-1];
-    	$ex_waktu = str_replace(':','_', $updated_at);
-    	$namabaru = "Surat_Masuk_".$pengirim.'_'.$ex_waktu.'.'.$extensi;
-		$file = str_replace(" ","_","$namabaru");
-		$folder = $base_url."/assets/files/$file";
-		$folder_move = "./assets/files/$file";
-    
-    	//check apakah type file sudah sesuai
-    	if(!in_array($extensi,$file_type)){
-            $eror   = true;
-            $pesan .= "Gagal Upload File - Format File Harus Document (.doc atau .docx)";
-        }
-        if($file_size > $max_size){
-            $eror   = true;
-            $pesan .= " Gagal Upload File - Ukuran File Tidak Boleh Lebih Dari 2MB";
-        }
-    	//check ukuran file apakah sudah sesuai
-    
-    	if($eror == true){
-    		echo "<script>alert('.$pesan.');</script>";
-    	}
-    	else{
-    	// 	//mulai memproses upload file
-    		if(move_uploaded_file("$nama_file","$folder_move")){ // (Nama Asli File, Folder Tujuan)
-    			//catat nama file ke database
-    			$query = "INSERT into tbl_surat_masuk (id_surat_masuk, pengirim, no_surat, tgl_surat, tgl_diterima, keterangan, id_user, file_surat, created_at, updated_at) values ('$uuid','$pengirim','$no_surat','$tgl_surat','$tgl_diterima','$keterangan','$id_user','$folder','$created_at','$updated_at')";
-    			
-    			$hasil = mysql_query($query);
-
+        if($kode=='1'){
+            if($sifat=='0'){
+                echo "
+                <script>
+                    alert('Sifat Surat Wajib Diisi');
+                    javascript: history.go(-1);
+                </script>
+                ";
+            }
+            else{
+                $query = "INSERT into tbl_disposisi (id_disposisi, no_surat, kategori_surat, tujuan_disposisi, isi_disposisi, no_agenda, sifat, catatan, id_user, created_at, updated_at) values ('$uuid','$no_surat','$kategori_surat','$tujuan_disposisi','$isi_disposisi','$no_agenda','$sifat','$catatan','$id_user','$created_at','$updated_at')";
+            
+                $hasil = mysql_query($query);
+        
                 if ($hasil) { 
-                    echo "
-                        <script language='JavaScript'>
-                        alert('Data Berhasil Ditambah');
-                        document.location='./admin.php?part=data-surat-masuk'</script>
-                    " ;
+                    ?>
+                        <script language="JavaScript">
+                            var id_disposisi = "<?= $uuid?>";
+                            var kategori_surat = "<?= $kategori_surat?>";
+                            alert("Surat Berhasil di Disposisi");
+                            document.location="./admin.php?part=detail-disposisi&kategori_surat="+ kategori_surat + "&kode=2&id_disposisi=" + id_disposisi
+                        </script>
+                    <?php
                 }
                 else{
-                    echo "
-                        <script language='JavaScript'>
-                        alert('Data Gagal Ditambah');
-                        document.location='./admin.php?part=tambah-surat-masuk'</script>
-                    " ;
+                ?>
+                    <script language="JavaScript">
+                        var id_surat = "<?= $id_surat?>";
+                        var kategori_surat = "<?= $kategori_surat?>";
+                        var kode = "<?= $kode?>";
+                        alert("Surat Gagal di Disposisi");
+                        document.location="./admin.php?part=tambah-disposisi&kategori_surat=" + kategori_surat + "&kode="+kode+"&id_surat="+id_surat
+                    </script>
+                <?php
                 }
-    		} else{
-    			echo "
-    			    <script language='JavaScript'>
-                    alert('Data Gagal Ditambah');
-                    document.location='./admin.php?part=tambah-surat-masuk'</script>
-    			" ;
-    		}
-    	}
+            }
+        }
+        else{
+            $tindakan = $_POST['tindakan'];
+            $batas_waktu = $_POST['batas_waktu'];
 
+        }
 //==============================================================================
     }
         elseif($_POST['parm']=='update_bos')

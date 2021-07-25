@@ -47,20 +47,23 @@
                       </td>
                       <td align="center">
                       <?php 
+                        $kategori_surat = 'Surat Masuk';
                         $cek_disposisi = "select * from tbl_disposisi where no_surat = '$no_surat'";
                         $lihat = mysql_query($cek_disposisi);
                         if(mysql_num_rows($lihat) > 0){
                           $hasil = mysql_fetch_array($lihat);
                       ?>
-                        <a href="admin.php?part=detail-disposisi&id_disposisi=<?php echo $hasil['id_disposisi']; ?>" class="btn btn-success mb-3"> <i class="fa fa-fw fa-eye" style="color: white"></i> <font color="white">Lihat Disposisi</font></a>
-                      <?php } else { ?>
-                        <form action="admin.php?part=tambah-disposisi" method="post">
-                            <input type="hidden" value="Surat Masuk" name="jenis_surat">
+                        <a href="admin.php?part=detail-disposisi&kategori_surat=<?= $kategori_surat;?>&kode=1&id_disposisi=<?php echo $hasil['id_disposisi']; ?>" class="btn btn-success mb-3"> <i class="fa fa-fw fa-eye" style="color: white"></i> <font color="white">Lihat Disposisi</font></a>
+                      <?php 
+                      } else { 
+                      ?>
+                        <a href="admin.php?part=tambah-disposisi&kategori_surat=<?= $kategori_surat;?>&kode=1&id_surat=<?= $data['id_surat_masuk'];?>" class="btn btn-primary mb-3"> <i class="fa fa-fw fa-clipboard" style="color: white"></i> <font color="white">Tambah Disposisi</font></a>
+                        <!-- <form action="admin.php?part=tambah-disposisi" method="post">
+                            <input type="hidden" value="Surat Masuk" name="kategori_surat">
                             <input type="hidden" value="<?=$data['id_surat_masuk'];?>" name="id_surat">
                             <input type="hidden" value="1" name="kode">
                             <button type="submit" class="btn btn-primary mb-3" value="Tambah Disposisi"><i class="fa fa-fw fa-clipboard" style="color: white"></i> Tambah Disposisi</button>
-                        </form>
-                        <!-- <a href="admin.php?part=tambah-disposisi&jenis_surat='Surat Masuk'&id_surat=<?php echo $data['id_surat_masuk']; ?>&kd=1" class="btn btn-primary mb-3"> <i class="fa fa-fw fa-clipboard" style="color: white"></i> <font color="white">Tambah Disposisi</font></a> -->
+                        </form> -->
                       <?php } ?>
                       </td>
                       <td align="center">

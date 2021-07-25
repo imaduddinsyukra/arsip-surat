@@ -11,27 +11,40 @@ switch ($route) {
         include "views/beranda.php";
       break;
     // Surat Masuk
+    case 'data-jenis-surat':
+        include "views/jenis-surat/data-jenis-surat.php";
+      break;
+    case 'aksi-jenis-surat':
+        include "controllers/jenisSuratController.php";
+      break;
+    // Surat Masuk
     case 'data-surat-masuk':
-        include "views/data-surat-masuk.php";
+        include "views/surat-masuk/data-surat-masuk.php";
       break;
     case 'tambah-surat-masuk':
-        include "views/data-surat-masuk-tambah.php";
+        include "views/surat-masuk/data-surat-masuk-tambah.php";
       break;
     case 'ubah-surat-masuk':
-        include "views/data-surat-masuk-ubah.php";
+        include "views/surat-masuk/data-surat-masuk-ubah.php";
       break;
     case 'detail-surat-masuk':
-        include "views/data-surat-masuk-detail.php";
+        include "views/surat-masuk/data-surat-masuk-detail.php";
       break;
     case 'aksi-surat-masuk':
         include "controllers/suratMasukController.php";
       break;
     // Disposisi
     case 'data-disposisi':
-      include "views/data-disposisi.php";
+      include "views/disposisi/data-disposisi.php";
     break;
     case 'tambah-disposisi':
-      include "views/data-disposisi-tambah.php";
+      include "views/disposisi/data-disposisi-tambah.php";
+    break;
+    case 'detail-disposisi':
+        include "views/disposisi/data-disposisi-detail.php";
+      break;
+    case 'aksi-disposisi':
+      include "controllers/disposisiController.php";
     break;
 
     default:

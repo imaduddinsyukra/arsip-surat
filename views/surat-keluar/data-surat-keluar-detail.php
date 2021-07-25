@@ -1,6 +1,6 @@
 <?php
 $id = $_GET['id_surat_masuk']; //get the no which will updated
-$queryy = mysql_query("SELECT * FROM tbl_surat_masuk join tbl_user using (id_user) WHERE id_surat_masuk = '$id'"); //get the data that will be updated
+$queryy = mysql_query("SELECT * FROM tbl_surat_masuk join tbl_user using (id_user) join tbl_jenis_surat using (id_jenis_surat) WHERE id_surat_masuk = '$id'"); //get the data that will be updated
 $dt=mysql_fetch_array($queryy)
 
  ?>
@@ -43,6 +43,11 @@ $dt=mysql_fetch_array($queryy)
             <div class="card mb-3">
                 Pengirim
               <input type="text" name="nama" class="form-control-rounded form-control" required="" value="<?php echo $dt['pengirim']; ?>" readonly>
+            </div>
+
+            <div class="card mb-3">
+                Jenis Surat
+              <input type="text" name="nama" class="form-control-rounded form-control" required="" value="<?php echo $dt['jenis_surat']; ?>" readonly>
             </div>
             
             <div class="card mb-3">
