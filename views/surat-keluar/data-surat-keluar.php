@@ -5,17 +5,17 @@
         <li class="breadcrumb-item">
           <a href="#">Dashboard</a>
         </li>
-        <li class="breadcrumb-item active">Data Surat Masuk</li>
+        <li class="breadcrumb-item active">Data Surat Keluar</li>
       </ol>
       <!-- Example DataTables Card-->
       <div class="card mb-3">
         <div class="card-header">
-          <i class="fa fa-table"></i> Tabel Data Surat Masuk</div>
+          <i class="fa fa-table"></i> Tabel Data Surat Keluar</div>
           <div class="card-body">
               <div class="table-responsive">
-                <a href="admin.php?part=tambah-surat-masuk" class="btn btn-success mb-3"><i class="fa fa-plus" style="color: white"></i> <font size="3" color="white"><u>Tambah Data</u></font></a></div><br>
+                <a href="admin.php?part=tambah-surat-keluar" class="btn btn-success mb-3"><i class="fa fa-plus" style="color: white"></i> <font size="3" color="white"><u>Tambah Data</u></font></a></div><br>
                 <?php
-                  $sqll = "select * from tbl_surat_masuk order by created_at desc";
+                  $sqll = "select * from tbl_surat_keluar order by created_at desc";
                   $resultt = mysql_query($sqll);
                     if(mysql_num_rows($resultt) > 0){
                 ?> 
@@ -25,7 +25,7 @@
                       <th>No.</th>
                       <th>No. Surat</th>
                       <th>Tanggal Surat</th>
-                      <th>Pengirim</th>
+                      <th>Tujuan</th>
                       <th><p align="center">Detail</p></th>
                       <th><p align="center">Disposisi</p></th>
                       <th><p align="center">Edit</p></th>
@@ -41,13 +41,13 @@
                       <td><?php echo $nomor++; ?></td>
                       <td><?php echo $data['no_surat'];?></td>
                       <td><?php echo $data['tgl_surat'];?></td>
-                      <td><?php echo $data['pengirim'];?></td>
+                      <td><?php echo $data['tujuan'];?></td>
                       <td align="center">
-                        <a href="admin.php?part=detail-surat-masuk&id_surat_masuk=<?= $data['id_surat_masuk']; ?>" class="btn btn-success mb-3"> <i class="fa fa-fw fa-eye" style="color: white"></i> <font color="white">Detail</font></a>
+                        <a href="admin.php?part=detail-surat-keluar&id_surat_keluar=<?= $data['id_surat_keluar']; ?>" class="btn btn-success mb-3"> <i class="fa fa-fw fa-eye" style="color: white"></i> <font color="white">Detail</font></a>
                       </td>
                       <td align="center">
                       <?php 
-                        $kategori_surat = 'Surat Masuk';
+                        $kategori_surat = 'Surat Keluar';
                         $cek_disposisi = "select * from tbl_disposisi where no_surat = '$no_surat'";
                         $lihat = mysql_query($cek_disposisi);
                         if(mysql_num_rows($lihat) > 0){
@@ -57,17 +57,17 @@
                       <?php 
                       } else { 
                       ?>
-                        <a href="admin.php?part=tambah-disposisi&kategori_surat=<?= $kategori_surat;?>&kode=1&id_surat=<?= $data['id_surat_masuk'];?>" class="btn btn-primary mb-3"> <i class="fa fa-fw fa-clipboard" style="color: white"></i> <font color="white">Tambah Disposisi</font></a>
+                        <a href="admin.php?part=tambah-disposisi&kategori_surat=<?= $kategori_surat;?>&kode=1&id_surat=<?= $data['id_surat_keluar'];?>" class="btn btn-primary mb-3"> <i class="fa fa-fw fa-clipboard" style="color: white"></i> <font color="white">Tambah Disposisi</font></a>
                         <!-- <form action="admin.php?part=tambah-disposisi" method="post">
-                            <input type="hidden" value="Surat Masuk" name="kategori_surat">
-                            <input type="hidden" value="<?=$data['id_surat_masuk'];?>" name="id_surat">
+                            <input type="hidden" value="Surat keluar" name="kategori_surat">
+                            <input type="hidden" value="<?=$data['id_surat_keluar'];?>" name="id_surat">
                             <input type="hidden" value="1" name="kode">
                             <button type="submit" class="btn btn-primary mb-3" value="Tambah Disposisi"><i class="fa fa-fw fa-clipboard" style="color: white"></i> Tambah Disposisi</button>
                         </form> -->
                       <?php } ?>
                       </td>
                       <td align="center">
-                        <a href="admin.php?part=ubah-surat-masuk&id_surat_masuk=<?php echo $data['id_surat_masuk']; ?>" class="btn btn-warning mb-3"> <i class="fa fa-fw fa-pencil" style="color: white"></i> <font color="white">Edit</font></a>
+                        <a href="admin.php?part=ubah-surat-keluar&id_surat_keluar=<?php echo $data['id_surat_keluar']; ?>" class="btn btn-warning mb-3"> <i class="fa fa-fw fa-pencil" style="color: white"></i> <font color="white">Edit</font></a>
                       </td>
                     </tr>
                   <?php

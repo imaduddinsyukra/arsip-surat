@@ -33,6 +33,22 @@ switch ($route) {
     case 'aksi-surat-masuk':
         include "controllers/suratMasukController.php";
       break;
+    // Surat Keluar
+    case 'data-surat-keluar':
+        include "views/surat-keluar/data-surat-keluar.php";
+      break;
+    case 'tambah-surat-keluar':
+        include "views/surat-keluar/data-surat-keluar-tambah.php";
+      break;
+    case 'ubah-surat-keluar':
+        include "views/surat-keluar/data-surat-keluar-ubah.php";
+      break;
+    case 'detail-surat-keluar':
+        include "views/surat-keluar/data-surat-keluar-detail.php";
+      break;
+    case 'aksi-surat-keluar':
+        include "controllers/suratKeluarController.php";
+      break;
     // Disposisi
     case 'data-disposisi':
       include "views/disposisi/data-disposisi.php";

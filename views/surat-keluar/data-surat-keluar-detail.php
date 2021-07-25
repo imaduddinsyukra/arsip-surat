@@ -1,6 +1,6 @@
 <?php
-$id = $_GET['id_surat_masuk']; //get the no which will updated
-$queryy = mysql_query("SELECT * FROM tbl_surat_masuk join tbl_user using (id_user) join tbl_jenis_surat using (id_jenis_surat) WHERE id_surat_masuk = '$id'"); //get the data that will be updated
+$id = $_GET['id_surat_keluar']; //get the no which will updated
+$queryy = mysql_query("SELECT tbl_surat_keluar.*, tbl_user.nama, tbl_jenis_surat.jenis_surat as jenis_surat FROM tbl_surat_keluar join tbl_user using (id_user) join tbl_jenis_surat using (id_jenis_surat) WHERE id_surat_keluar = '$id'"); //get the data that will be updated
 $dt=mysql_fetch_array($queryy)
 
  ?>
@@ -13,14 +13,14 @@ $dt=mysql_fetch_array($queryy)
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="#">Surat Masuk</a>
+          <a href="#">Surat Keluar</a>
         </li>
-        <li class="breadcrumb-item active">Detail Surat Masuk</li>
+        <li class="breadcrumb-item active">Detail Surat Keluar</li>
       </ol>
       <!-- Example DataTables Card-->
       <div class="card mb-3">
         <div class="card-header">
-          <i class="fa fa-table"></i> Detail Surat Masuk</div>
+          <i class="fa fa-table"></i> Detail Surat Keluar</div>
         <div class="card-body">
           <div class="table-responsive">
 
@@ -31,43 +31,43 @@ $dt=mysql_fetch_array($queryy)
 
             <!-- Example Social Card-->
             <div class="card mb-3">
-                No. Surat
+              <b>No. Surat</b>
               <input type="text" name="nama" class="form-control-rounded form-control" required="" value="<?php echo $dt['no_surat']; ?>" readonly>
             </div>
 
             <div class="card mb-3">
-                Tanggal Surat
+              <b>Tanggal Surat</b>
               <input type="text" name="nama" class="form-control-rounded form-control" required="" value="<?php echo $dt['tgl_surat']; ?>" readonly>
             </div>
 
             <div class="card mb-3">
-                Pengirim
-              <input type="text" name="nama" class="form-control-rounded form-control" required="" value="<?php echo $dt['pengirim']; ?>" readonly>
+              <b>Tujuan</b>
+              <input type="text" name="nama" class="form-control-rounded form-control" required="" value="<?php echo $dt['tujuan']; ?>" readonly>
             </div>
 
             <div class="card mb-3">
-                Jenis Surat
+              <b>Jenis Surat</b>
               <input type="text" name="nama" class="form-control-rounded form-control" required="" value="<?php echo $dt['jenis_surat']; ?>" readonly>
             </div>
             
             <div class="card mb-3">
-                Tanggal Diterima
-              <input type="text" name="nama" class="form-control-rounded form-control" required="" value="<?php echo $dt['tgl_diterima']; ?>" readonly>
+              <b>Tanggal Dicatat</b>
+              <input type="text" name="nama" class="form-control-rounded form-control" required="" value="<?php echo $dt['tgl_catat']; ?>" readonly>
             </div>
 
             <div class="card mb-3">
-                Diterima Oleh
+              <b>Diterima Oleh</b>
               <input type="text" name="nama" class="form-control-rounded form-control" required="" value="<?php echo $dt['nama']; ?>" readonly>
             </div>
 
             <div class="card mb-3">
-                Keterangan
+              <b>Keterangan</b>
               <input type="text" name="nama" class="form-control-rounded form-control" required="" value="<?php echo $dt['keterangan']; ?>" readonly>
             </div>
 
             <!-- <div class="card mb-3">
             Berkas Scan Surat<br>
-              <a href="pages/download_berkas_masuk.php?id_surat_masuk=<?php echo $dt['id_surat_masuk']; ?>" class="btn btn-success mb-3" target="_blank"> <i class="fa fa-fw fa-download" style="color: white"></i> <font color="white">Download Berkas</font></a>
+              <a href="pages/download_berkas_keluar.php?id_surat_keluar=<?php echo $dt['id_surat_keluar']; ?>" class="btn btn-success mb-3" target="_blank"> <i class="fa fa-fw fa-download" style="color: white"></i> <font color="white">Download Berkas</font></a>
 
               
             </div> -->
@@ -76,7 +76,7 @@ $dt=mysql_fetch_array($queryy)
           </div>
 
           <p align="right">
-            <a href="pages/download_berkas_masuk.php?id_surat_masuk=<?php echo $dt['id_surat_masuk']; ?>" class="btn btn-success mb-3" target="_blank"> <i class="fa fa-fw fa-download" style="color: white"></i> <font color="white">Download Surat</font></a>
+            <a href="pages/download_berkas_keluar.php?id_surat_keluar=<?php echo $dt['id_surat_keluar']; ?>" class="btn btn-success mb-3" target="_blank"> <i class="fa fa-fw fa-download" style="color: white"></i> <font color="white">Download Surat</font></a>
           </p>
 
           <iframe class="doc" src="https://docs.google.com/gview?url=<?= $dt['file_surat'];?>&embedded=true" style="width: 100%; height: 500px"></iframe>

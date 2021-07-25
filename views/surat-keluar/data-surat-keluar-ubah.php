@@ -1,6 +1,6 @@
 <?php
-  $id = $_GET['id_surat_masuk']; //get the no which will updated
-  $queryy = mysql_query("SELECT * FROM tbl_surat_masuk WHERE id_surat_masuk = '$id'"); //get the data that will be updated
+  $id = $_GET['id_surat_keluar']; //get the no which will updated
+  $queryy = mysql_query("SELECT * FROM tbl_surat_keluar WHERE id_surat_keluar = '$id'"); //get the data that will be updated
   $dt=mysql_fetch_array($queryy);
 ?>
 <div id="lb-back">
@@ -11,26 +11,26 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="#">Surat Masuk</a>
+          <a href="#">Surat Keluar</a>
         </li>
-        <li class="breadcrumb-item active">Ubah Data Surat Masuk</li>
+        <li class="breadcrumb-item active">Ubah Data Surat Keluar</li>
       </ol>
       <!-- Example DataTables Card-->
       <div class="card mb-3">
         <div class="card-header">
-          <i class="fa fa-clipboard"></i> Form Ubah Data Surat Masuk</div>
+          <i class="fa fa-clipboard"></i> Form Ubah Data Surat Keluar</div>
         <div class="card-body">
           <div class="table-responsive">
             <p align="right">
                 <a href="javascript:history.back()" class="btn btn-primary mb-3"> <i class="fa fa-fw fa-arrow-left"></i> Kembali</a>
             </p>
 
-<form action="admin.php?part=aksi-surat-masuk" method="post" enctype="multipart/form-data">
-<input type='hidden' name='id_surat_masuk' class="form-control" value="<?= $dt['id_surat_masuk'];?>">
+<form action="admin.php?part=aksi-surat-keluar" method="post" enctype="multipart/form-data">
+<input type='hidden' name='id_surat_keluar' class="form-control" value="<?= $dt['id_surat_keluar'];?>">
 <input type="hidden" name="parm" value="update_bos">
     <div class="form-group mb-4">
-        <label>Pengirim *</label>
-        <input type='text' name='pengirim' class="form-control"  value="<?= $dt['pengirim'];?>" required>
+        <label>Tujuan *</label>
+        <input type='text' name='tujuan' class="form-control"  value="<?= $dt['tujuan'];?>" required>
     </div>
 
     <div class="form-group mb-4">
@@ -60,8 +60,8 @@
     </div>
 
     <div class="form-group mb-4">
-        <label>Tanggal Diterima *</label>
-        <input type='date' name='tgl_diterima' class="form-control"  value="<?= $dt['tgl_diterima'];?>" required>
+        <label>Tanggal Dicatat *</label>
+        <input type='date' name='tgl_catat' class="form-control"  value="<?= $dt['tgl_catat'];?>" required>
     </div>
 
     <div class="form-group mb-4">

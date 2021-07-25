@@ -6,26 +6,26 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="#">Surat Masuk</a>
+          <a href="#">Surat Keluar</a>
         </li>
-        <li class="breadcrumb-item active">Tambah Data Surat Masuk</li>
+        <li class="breadcrumb-item active">Tambah Data Surat Keluar</li>
       </ol>
       <!-- Example DataTables Card-->
       <div class="card mb-3">
         <div class="card-header">
-          <i class="fa fa-clipboard"></i> Form Tambah Data Surat Masuk</div>
+          <i class="fa fa-clipboard"></i> Form Tambah Data Surat Keluar</div>
         <div class="card-body">
           <div class="table-responsive">
             <p align="right">
                 <a href="javascript:history.back()" class="btn btn-primary mb-3"> <i class="fa fa-fw fa-arrow-left"></i> Kembali</a>
             </p>
 
-<form action="admin.php?part=aksi-surat-masuk" method="post" enctype="multipart/form-data">
+<form action="admin.php?part=aksi-surat-keluar" method="post" enctype="multipart/form-data">
 
 <input type="hidden" name="parm" value="add_bos">
     <div class="form-group mb-4">
-        <label>Pengirim *</label>
-        <input type='text' name='pengirim' class="form-control" required>
+        <label>Tujuan *</label>
+        <input type='text' name='tujuan' class="form-control" required>
     </div>
 
     <div class="form-group mb-4">
@@ -53,8 +53,8 @@
     </div>
 
     <div class="form-group mb-4">
-        <label>Tanggal Diterima *</label>
-        <input type='date' name='tgl_diterima' class="form-control" required>
+        <label>Tanggal Dicatat *</label>
+        <input type='date' name='tgl_catat' class="form-control" required>
     </div>
 
     <div class="form-group mb-4">
