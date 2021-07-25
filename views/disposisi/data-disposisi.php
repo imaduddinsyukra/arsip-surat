@@ -28,12 +28,12 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                        <th>No.</th>
-                        <th>No. Agenda</th>
-                        <th>No. Surat</th>
-                        <th>Kategori Surat</th>
-                        <th>Tujuan Disposisi</th>
-                        <th>Sifat</th>
+                        <th><p align="center">No.</p></th>
+                        <th><p align="center">No. Agenda</p></th>
+                        <th><p align="center">No. Surat</p></th>
+                        <th><p align="center">Kategori Surat</p></th>
+                        <th><p align="center">Tujuan Disposisi</p></th>
+                        <th><p align="center">Sifat</p></th>
                         <th><p align="center">Detail</p></th>
                     </tr>
                   </thead>
@@ -44,12 +44,12 @@
                       $no_surat = $data['no_surat'];
                   ?>              
                     <tr>
-                      <td><?php echo $nomor++; ?></td>
-                      <td><?php echo $data['no_agenda'];?></td>
-                      <td><?php echo $data['no_surat'];?></td>
-                      <td><?php echo $data['kategori_surat'];?></td>
-                      <td><?php echo $data['tujuan_disposisi'];?></td>
-                      <td><b><?php echo $data['sifat'];?></b></td>
+                      <td><?= $nomor++; ?></td>
+                      <td><?= $data['no_agenda'];?></td>
+                      <td><?= $data['no_surat'];?></td>
+                      <td><?= $data['kategori_surat'];?></td>
+                      <td><?= $data['tujuan_disposisi'];?></td>
+                      <td><b><?= $data['sifat'];?></b></td>
                       <td align="center">
                         <a href="admin.php?part=detail-disposisi&kategori_surat=<?= $data['kategori_surat'];?>&kode=2&id_disposisi=<?= $data['id_disposisi']; ?>" class="btn btn-success mb-3"> <i class="fa fa-fw fa-eye" style="color: white"></i> <font color="white">Detail</font></a>
                       </td>

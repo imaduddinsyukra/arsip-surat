@@ -26,8 +26,8 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>No.</th>
-                      <th>Jenis Surat</th>
+                      <th><p align="center">No.</p></th>
+                      <th><p align="center">Jenis Surat</p></th>
                       <th><p align="center">Edit</p></th>
                       <th><p align="center">Hapus</p></th>
                     </tr>
@@ -38,8 +38,8 @@
                     while($data = mysql_fetch_array($resultt)){
                   ?>              
                     <tr>
-                      <td><?php echo $nomor++; ?></td>
-                      <td><?php echo $data['jenis_surat'];?></td>
+                      <td><?= $nomor++; ?></td>
+                      <td><?= $data['jenis_surat'];?></td>
                       <td align="center">
                         <a class="btn btn-warning" id="tombolUbah" data-toggle="modal" data-target="#modal-edit-<?=$data['id_jenis_surat'];?>" style="width: 70px"> <font color="white"><i class="fa fa-edit"></i> Edit</font>
                         </a>

@@ -67,6 +67,13 @@
           </a>
         </li>
 
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Surat Keluar">
+          <a class="nav-link" href="admin.php?part=data-info">
+            <i class="fa fa-fw fa-info-circle"></i>
+            <span class="nav-link-text">Info</span>
+          </a>
+        </li>
+
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Laporan">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-print"></i>

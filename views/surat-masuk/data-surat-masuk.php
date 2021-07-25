@@ -13,7 +13,8 @@
           <i class="fa fa-table"></i> Tabel Data Surat Masuk</div>
           <div class="card-body">
               <div class="table-responsive">
-                <a href="admin.php?part=tambah-surat-masuk" class="btn btn-success mb-3"><i class="fa fa-plus" style="color: white"></i> <font size="3" color="white"><u>Tambah Data</u></font></a></div><br>
+                <a href="admin.php?part=tambah-surat-masuk" class="btn btn-success mb-3"><i class="fa fa-plus" style="color: white"></i> <font size="3" color="white"><u>Tambah Data</u></font></a>
+                <br>
                 <?php
                   $sqll = "select * from tbl_surat_masuk order by created_at desc";
                   $resultt = mysql_query($sqll);
@@ -22,10 +23,10 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>No.</th>
-                      <th>No. Surat</th>
-                      <th>Tanggal Surat</th>
-                      <th>Pengirim</th>
+                      <th><p align="center">No.</p></th>
+                      <th><p align="center">No. Surat</p></th>
+                      <th><p align="center">Tanggal Surat</p></th>
+                      <th><p align="center">Pengirim</p></th>
                       <th><p align="center">Detail</p></th>
                       <th><p align="center">Disposisi</p></th>
                       <th><p align="center">Edit</p></th>
@@ -38,10 +39,10 @@
                     $no_surat = $data['no_surat'];
                   ?>              
                     <tr>
-                      <td><?php echo $nomor++; ?></td>
-                      <td><?php echo $data['no_surat'];?></td>
-                      <td><?php echo $data['tgl_surat'];?></td>
-                      <td><?php echo $data['pengirim'];?></td>
+                      <td><?= $nomor++; ?></td>
+                      <td><?= $data['no_surat'];?></td>
+                      <td><?= $data['tgl_surat'];?></td>
+                      <td><?= $data['pengirim'];?></td>
                       <td align="center">
                         <a href="admin.php?part=detail-surat-masuk&id_surat_masuk=<?= $data['id_surat_masuk']; ?>" class="btn btn-success mb-3"> <i class="fa fa-fw fa-eye" style="color: white"></i> <font color="white">Detail</font></a>
                       </td>
@@ -53,7 +54,7 @@
                         if(mysql_num_rows($lihat) > 0){
                           $hasil = mysql_fetch_array($lihat);
                       ?>
-                        <a href="admin.php?part=detail-disposisi&kategori_surat=<?= $kategori_surat;?>&kode=1&id_disposisi=<?php echo $hasil['id_disposisi']; ?>" class="btn btn-success mb-3"> <i class="fa fa-fw fa-eye" style="color: white"></i> <font color="white">Lihat Disposisi</font></a>
+                        <a href="admin.php?part=detail-disposisi&kategori_surat=<?= $kategori_surat;?>&kode=1&id_disposisi=<?= $hasil['id_disposisi']; ?>" class="btn btn-success mb-3"> <i class="fa fa-fw fa-eye" style="color: white"></i> <font color="white">Lihat Disposisi</font></a>
                       <?php 
                       } else { 
                       ?>
@@ -67,7 +68,7 @@
                       <?php } ?>
                       </td>
                       <td align="center">
-                        <a href="admin.php?part=ubah-surat-masuk&id_surat_masuk=<?php echo $data['id_surat_masuk']; ?>" class="btn btn-warning mb-3"> <i class="fa fa-fw fa-pencil" style="color: white"></i> <font color="white">Edit</font></a>
+                        <a href="admin.php?part=ubah-surat-masuk&id_surat_masuk=<?= $data['id_surat_masuk']; ?>" class="btn btn-warning mb-3"> <i class="fa fa-fw fa-pencil" style="color: white"></i> <font color="white">Edit</font></a>
                       </td>
                     </tr>
                   <?php
@@ -87,6 +88,7 @@
 <!-- ==========================================================================   -->
               </div>
             </div>
+          </div>
         </div>
     <!-- /.container-fluid-->
     <!-- /.content-wrapper-->

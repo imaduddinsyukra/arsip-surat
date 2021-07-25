@@ -26,6 +26,10 @@ include "assets/conn/cek.php";
   <link href="assets/acc/css/style-foto.css" rel="stylesheet">
   <!-- DROPIFY -->
   <link rel="stylesheet" href="assets/acc/dropify/dist/css/dropify.min.css">
+  <!-- CKEDITOR -->
+  <script type="text/javascript" src="assets/acc/ckeditor/ckeditor.js"></script>
+  <link rel="stylesheet" type="text/css" href="assets/acc/ckeditor/style.css">
+  <!-- END CKEDITOR -->
 
 
 </head>

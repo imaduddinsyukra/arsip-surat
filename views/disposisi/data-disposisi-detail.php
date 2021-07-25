@@ -3,11 +3,10 @@ $id_disposisi = $_GET['id_disposisi']; //get the no which will updated
 $kode = $_GET['kode']; //get the no which will updated
 $kategori_surat = $_GET['kategori_surat']; //get the no which will updated
 if($kategori_surat=="Surat Masuk"){
-  // $queryy = mysql_query("SELECT * FROM tbl_disposisi join tbl_surat_masuk using (no_surat) join tbl_user using (id_user) join tbl_jenis_surat using (id_jenis_surat) WHERE id_disposisi = '$id_disposisi'"); 
   $queryy = mysql_query("SELECT * FROM tbl_disposisi join tbl_surat_masuk join tbl_jenis_surat join tbl_user where tbl_disposisi.no_surat = tbl_surat_masuk.no_surat and tbl_surat_masuk.id_jenis_surat = tbl_jenis_surat.id_jenis_surat and tbl_disposisi.id_user = tbl_user.id_user and id_disposisi = '$id_disposisi'"); 
 }
 elseif($kategori_surat=="Surat Keluar"){
-  $queryy = mysql_query("SELECT * FROM tbl_disposisi join tbl_surat_keluar using (no_surat) join tbl_user using (id_user) join tbl_jenis_surat using (id_jenis_surat) WHERE id_disposisi = '$id_disposisi'");
+  $queryy = mysql_query("SELECT * FROM tbl_disposisi join tbl_surat_keluar join tbl_jenis_surat join tbl_user where tbl_disposisi.no_surat = tbl_surat_keluar.no_surat and tbl_surat_keluar.id_jenis_surat = tbl_jenis_surat.id_jenis_surat and tbl_disposisi.id_user = tbl_user.id_user and id_disposisi = '$id_disposisi'");
 }
 $dt=mysql_fetch_array($queryy)
 
@@ -59,10 +58,21 @@ $dt=mysql_fetch_array($queryy)
                 <input type="text" name="nama" class="form-control-rounded form-control" required="" value="<?= $dt['nama']; ?>" readonly>
             </div>
 
-            <div class="card mb-3">
-                <b>Surat Dari</b>
-              <input type="text" name="nama" class="form-control-rounded form-control" required="" value="<?= $dt['pengirim']; ?>" readonly>
-            </div>
+            <?php
+              if($kategori_surat=="Surat Masuk"){
+            ?>
+              <div class="card mb-3">
+                  <b>Surat Dari</b>
+                <input type="text" name="nama" class="form-control-rounded form-control" required="" value="<?= $dt['pengirim']; ?>" readonly>
+              </div>
+            <?php 
+              } elseif($kategori_surat=="Surat Keluar"){ 
+            ?>
+                <div class="card mb-3">
+                    <b>Tujuan Surat</b>
+                  <input type="text" name="nama" class="form-control-rounded form-control" required="" value="<?= $dt['tujuan']; ?>" readonly>
+                </div>
+            <?php } ?>
 
             <div class="card mb-3">
                 <b>No. Surat</b>
@@ -79,11 +89,21 @@ $dt=mysql_fetch_array($queryy)
               <input type="text" name="nama" class="form-control-rounded form-control" required="" value="<?= $dt['tgl_surat']; ?>" readonly>
             </div>
            
-            <div class="card mb-3">
-                <b>Tanggal Diterima</b>
-              <input type="text" name="nama" class="form-control-rounded form-control" required="" value="<?= $dt['tgl_diterima']; ?>" readonly>
-            </div>
-           
+            <?php
+              if($kategori_surat=="Surat Masuk"){
+            ?>
+              <div class="card mb-3">
+                  <b>Tanggal Diterima</b>
+                <input type="text" name="nama" class="form-control-rounded form-control" required="" value="<?= $dt['tgl_diterima']; ?>" readonly>
+              </div>
+              <?php
+              } elseif($kategori_surat == "Surat Keluar"){ 
+                ?>
+              <div class="card mb-3">
+                  <b>Tanggal Dicatat</b>
+                <input type="text" name="nama" class="form-control-rounded form-control" required="" value="<?= $dt['tgl_catat']; ?>" readonly>
+              </div>
+            <?php } ?>
             <div class="card mb-3">
                 <b>No. Agenda</b>
               <input type="text" name="nama" class="form-control-rounded form-control" required="" value="<?= $dt['no_agenda']; ?>" readonly>

@@ -3,7 +3,12 @@
   $id_surat = $_GET['id_surat'];
   $kode = $_GET['kode'];
   
-  $queryy = mysql_query("SELECT * FROM tbl_surat_masuk WHERE id_surat_masuk = '$id_surat'"); //get the data that will be updated
+  if($kategori_surat == "Surat Masuk"){
+    $queryy = mysql_query("SELECT * FROM tbl_surat_masuk WHERE id_surat_masuk = '$id_surat'"); //get the data that will be updated
+  }
+  elseif($kategori_surat == "Surat Keluar"){
+    $queryy = mysql_query("SELECT * FROM tbl_surat_keluar WHERE id_surat_keluar = '$id_surat'"); //get the data that will be updated
+  }
   $dt=mysql_fetch_array($queryy);
 
 ?>
@@ -42,11 +47,22 @@
         <input type='text' name='tgl_surat' class="form-control" value="<?= $dt['tgl_surat'];?>" required readonly="">
     </div>
 
-    
-    <div class="form-group mb-4">
-        <label>Pengirim</label>
-        <input type='text' name='pengirim' class="form-control" value="<?= $dt['pengirim'];?>" readonly="">
-    </div>
+    <?php
+      if($kategori_surat == "Surat Masuk"){
+    ?>
+      <div class="form-group mb-4">
+          <label>Pengirim</label>
+          <input type='text' name='pengirim' class="form-control" value="<?= $dt['pengirim'];?>" readonly="">
+      </div>
+      <?php
+      } elseif($kategori_surat == "Surat Keluar"){
+      ?>
+        <div class="form-group mb-4">
+            <label>Tujuan</label>
+            <input type='text' name='tujuan' class="form-control" value="<?= $dt['tujuan'];?>" readonly="">
+        </div>
+      <?php } ?>
+
 
     <div class="form-group">
         <label>Kategori Surat</label>

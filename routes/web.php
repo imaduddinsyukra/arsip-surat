@@ -10,7 +10,7 @@ switch ($route) {
     case '':
         include "views/beranda.php";
       break;
-    // Surat Masuk
+    // Jenis Surat
     case 'data-jenis-surat':
         include "views/jenis-surat/data-jenis-surat.php";
       break;
@@ -51,41 +51,34 @@ switch ($route) {
       break;
     // Disposisi
     case 'data-disposisi':
-      include "views/disposisi/data-disposisi.php";
-    break;
+        include "views/disposisi/data-disposisi.php";
+      break;
     case 'tambah-disposisi':
-      include "views/disposisi/data-disposisi-tambah.php";
-    break;
+        include "views/disposisi/data-disposisi-tambah.php";
+      break;
     case 'detail-disposisi':
         include "views/disposisi/data-disposisi-detail.php";
       break;
     case 'aksi-disposisi':
-      include "controllers/disposisiController.php";
-    break;
+        include "controllers/disposisiController.php";
+      break;
+
+     // Info
+    case 'data-info':
+        include "views/info/data-info.php";
+      break;
+    case 'tambah-info':
+        include "views/info/data-info-tambah.php";
+      break;
+    case 'ubah-info':
+        include "views/info/data-info-ubah.php";
+      break;
+    case 'aksi-info':
+        include "controllers/infoController.php";
+      break;
 
     default:
         include "views/not-found.php";
   }
 
 // /*====================================================================================================================*/
-
-// elseif ($mod=='kelola-berita'){
-//     include "modul/kelola-berita/index.php";
-// }
-
-// elseif ($mod=='detail-berita'){
-//     include "modul/kelola-berita/detail.php";
-// }
-
-// elseif ($mod=='add-berita'){
-//     include "modul/kelola-berita/add.php";
-// }
-
-// elseif ($mod=='update-berita'){
-//     include "modul/kelola-berita/update.php";
-// }
-
-// elseif ($mod=='aksi-berita'){
-//     include "modul/kelola-berita/aksi.php";
-// }
-// /
