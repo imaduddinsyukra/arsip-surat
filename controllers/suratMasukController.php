@@ -44,8 +44,9 @@
             $ex_waktu = str_replace(':','_', $updated_at);
             $namabaru = "Surat_Masuk_".$pengirim.'_'.$ex_waktu.'.'.$extensi;
             $file = str_replace(" ","_","$namabaru");
-            $folder = $base_url."/assets/files/$file";
-            $folder_move = "./assets/files/$file";
+            // $folder = $base_url."/assets/files/$file";
+            $folder = "./assets/files/surat-masuk/$file";
+            $folder_move = "./assets/files/surat-masuk/$file";
         
             //check apakah type file sudah sesuai
             if(!in_array($extensi,$file_type)){
@@ -116,8 +117,9 @@
         $ex_waktu = str_replace(':','_', $updated_at);
         $namabaru = "Surat_Masuk_".$pengirim.'_Updated_at_'.$ex_waktu.'.'.$extensi;
         $file = str_replace(" ","_","$namabaru");
-        $folder = $base_url."/assets/files/$file";
-        $folder_move = "./assets/files/$file";
+        // $folder = $base_url."/assets/files/$file";
+        $folder = "./assets/files/surat-masuk/$file";
+        $folder_move = "./assets/files/surat-masuk/$file";
         
         $pesan="";
         if($file_name!=''){

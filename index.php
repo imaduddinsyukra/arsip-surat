@@ -4,15 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login - Sistem Informasi Pengarsipan Surat</title>
-  <link rel="shortcut icon" type="image/x-icon" href="assets/logo.png">
-  <link rel="stylesheet" href="res/css/style.css">
-  <link rel="stylesheet" href="res/plugin/FontAwesome/css/font-awesome.min.css">
+  <link rel="shortcut icon" type="image/x-icon" href="assets/res/img/logox.png">
+  <link rel="stylesheet" href="assets/res/css/style.css">
+  <link rel="stylesheet" href="assets/res/plugin/FontAwesome/css/font-awesome.min.css">
 </head>
 <body>
-  <div id="container" data-background="res/img/bg.jpg">
+  <div id="container" data-background="assets/res/img/bg.jpg">
     <div class="box box-sm">
       <div class="logo">
-      <p align="center"><img src="assets/img/logos/logo.png" width="30%"></p>
+      <p align="center"><img src="assets/res/img/logox.png" width="30%"></p>
         <h1 style="font-size:18pt;letter-spacing:-3px;" align="center">SISTEM INFORMASI <br>PENGARSIPAN SURAT</h1>
       </div>
       <div class="form">
@@ -31,8 +31,8 @@
       </div>
     </div>
   </div>
-  <script type="text/javascript" src="res/plugin/jQuery/jquery-3.2.1.slim.min.js"></script>
-  <script type="text/javascript" src="res/js/script.js"></script>
+  <script type="text/javascript" src="assets/res/plugin/jQuery/jquery-3.2.1.slim.min.js"></script>
+  <script type="text/javascript" src="assets/res/js/script.js"></script>
   <script type="text/javascript">
     $(".btn-default").click(function(){
       $("#container").removeClass("bungloon-square bungloon-underline bungloon-outline");

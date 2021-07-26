@@ -1,9 +1,9 @@
 <?php
-$id = $_GET['id_surat_masuk']; //get the no which will updated
-$queryy = mysql_query("SELECT * FROM tbl_surat_masuk join tbl_user using (id_user) join tbl_jenis_surat using (id_jenis_surat) WHERE id_surat_masuk = '$id'"); //get the data that will be updated
-$dt=mysql_fetch_array($queryy)
+  $id = $_GET['id_surat_masuk']; //get the no which will updated
+  $queryy = mysql_query("SELECT * FROM tbl_surat_masuk join tbl_user using (id_user) join tbl_jenis_surat using (id_jenis_surat) WHERE id_surat_masuk = '$id'"); //get the data that will be updated
+  $dt=mysql_fetch_array($queryy);
 
- ?>
+?>
 
 <div id="lb-back">
   <div id="lb-img"></div>
@@ -31,7 +31,7 @@ $dt=mysql_fetch_array($queryy)
 
             <!-- Example Social Card-->
             <div class="card mb-3">
-                No. Surat
+                No. Surat 
               <input type="text" name="nama" class="form-control-rounded form-control" required="" value="<?php echo $dt['no_surat']; ?>" readonly>
             </div>
 
@@ -76,18 +76,27 @@ $dt=mysql_fetch_array($queryy)
           </div>
 
           <p align="right">
-            <a href="pages/download_berkas_masuk.php?id_surat_masuk=<?php echo $dt['id_surat_masuk']; ?>" class="btn btn-success mb-3" target="_blank"> <i class="fa fa-fw fa-download" style="color: white"></i> <font color="white">Download Surat</font></a>
+            <a href="<?= $dt['file_surat']; ?>" class="btn btn-success mb-3" target="_blank"> <i class="fa fa-fw fa-download" style="color: white"></i> <font color="white">Download Surat</font></a>
           </p>
 
-          <iframe class="doc" src="https://docs.google.com/gview?url=<?= $dt['file_surat'];?>&embedded=true" style="width: 100%; height: 500px"></iframe>
           
           <!-- /Card Columns-->
  
 
           <div class="row">
             <div class="col-12" align="center">
-            <iframe class="doc" src="https://docs.google.com/gview?url=https://file-examples-com.github.io/uploads/2017/02/file-sample_100kB.doc&embedded=true" style="width: 100%; height: 500px"></iframe>
+              <?php 
+                $base_url = $_SERVER['DOCUMENT_ROOT'].dirname($_SERVER['PHP_SELF']);
 
+                echo "APAAA";
+                echo "<br/>";
+                echo $base_url;
+                echo "<br/>";
+                echo $_SERVER['DOCUMENT_ROOT'];
+                echo "<br/>";
+              ?>
+            <!-- <iframe class="doc" src="https://docs.google.com/gview?url=http://kampus-programmer.com/assets/files/Surat_Masuk_KPAI_Riau_2021-07-25_23_21_33.doc&embedded=true" style="width: 100%; height: 500px"></iframe> -->
+            <iframe class="doc" src="https://docs.google.com/gview?url=<?= $dt['file_surat']; ?>&embedded=true" style="width: 100%; height: 500px"></iframe>
             </div>
           </div>
 
