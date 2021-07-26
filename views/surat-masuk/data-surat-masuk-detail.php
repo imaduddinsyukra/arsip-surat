@@ -64,39 +64,24 @@
                 Keterangan
               <input type="text" name="nama" class="form-control-rounded form-control" required="" value="<?php echo $dt['keterangan']; ?>" readonly>
             </div>
-
-            <!-- <div class="card mb-3">
-            Berkas Scan Surat<br>
-              <a href="pages/download_berkas_masuk.php?id_surat_masuk=<?php echo $dt['id_surat_masuk']; ?>" class="btn btn-success mb-3" target="_blank"> <i class="fa fa-fw fa-download" style="color: white"></i> <font color="white">Download Berkas</font></a>
-
-              
-            </div> -->
-            <!-- Example Social Card-->
             
           </div>
 
+          <!-- Download File -->
           <p align="right">
-            <a href="<?= $dt['file_surat']; ?>" class="btn btn-success mb-3" target="_blank"> <i class="fa fa-fw fa-download" style="color: white"></i> <font color="white">Download Surat</font></a>
+            <a href="<?= $dt['file_surat']; ?>" class="btn btn-success mb-3" target="_blank"> <i class="fa fa-fw fa-download" style="color: white"></i> <font color="white">Download File Asli</font></a>
           </p>
 
           
-          <!-- /Card Columns-->
- 
-
+          <!-- Preview File -->
           <div class="row">
             <div class="col-12" align="center">
               <?php 
-                $base_url = $_SERVER['DOCUMENT_ROOT'].dirname($_SERVER['PHP_SELF']);
-
-                echo "APAAA";
-                echo "<br/>";
-                echo $base_url;
-                echo "<br/>";
-                echo $_SERVER['DOCUMENT_ROOT'];
-                echo "<br/>";
+                $ex = explode('./', $dt['file_surat']);
+                $base_url = $_SERVER['HTTP_HOST'].'/'.$ex[1];
               ?>
-            <!-- <iframe class="doc" src="https://docs.google.com/gview?url=http://kampus-programmer.com/assets/files/Surat_Masuk_KPAI_Riau_2021-07-25_23_21_33.doc&embedded=true" style="width: 100%; height: 500px"></iframe> -->
-            <iframe class="doc" src="https://docs.google.com/gview?url=<?= $dt['file_surat']; ?>&embedded=true" style="width: 100%; height: 500px"></iframe>
+
+              <iframe src="https://docs.google.com/gview?url=<?= $base_url; ?>&embedded=true" style="width: 100%; height: 500px"></iframe>
             </div>
           </div>
 

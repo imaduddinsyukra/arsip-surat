@@ -1,7 +1,7 @@
 <?php
-$id = $_GET['id_surat_keluar']; //get the no which will updated
-$queryy = mysql_query("SELECT tbl_surat_keluar.*, tbl_user.nama, tbl_jenis_surat.jenis_surat as jenis_surat FROM tbl_surat_keluar join tbl_user using (id_user) join tbl_jenis_surat using (id_jenis_surat) WHERE id_surat_keluar = '$id'"); //get the data that will be updated
-$dt=mysql_fetch_array($queryy)
+  $id = $_GET['id_surat_keluar']; //get the no which will updated
+  $queryy = mysql_query("SELECT tbl_surat_keluar.*, tbl_user.nama, tbl_jenis_surat.jenis_surat as jenis_surat FROM tbl_surat_keluar join tbl_user using (id_user) join tbl_jenis_surat using (id_jenis_surat) WHERE id_surat_keluar = '$id'"); //get the data that will be updated
+  $dt=mysql_fetch_array($queryy);
 
  ?>
 
@@ -65,29 +65,23 @@ $dt=mysql_fetch_array($queryy)
               <input type="text" name="nama" class="form-control-rounded form-control" required="" value="<?php echo $dt['keterangan']; ?>" readonly>
             </div>
 
-            <!-- <div class="card mb-3">
-            Berkas Scan Surat<br>
-              <a href="pages/download_berkas_keluar.php?id_surat_keluar=<?php echo $dt['id_surat_keluar']; ?>" class="btn btn-success mb-3" target="_blank"> <i class="fa fa-fw fa-download" style="color: white"></i> <font color="white">Download Berkas</font></a>
-
-              
-            </div> -->
-            <!-- Example Social Card-->
-            
           </div>
 
+          <!-- Download File -->
           <p align="right">
-            <a href="pages/download_berkas_keluar.php?id_surat_keluar=<?php echo $dt['id_surat_keluar']; ?>" class="btn btn-success mb-3" target="_blank"> <i class="fa fa-fw fa-download" style="color: white"></i> <font color="white">Download Surat</font></a>
+            <a href="<?= $dt['file_surat']; ?>" class="btn btn-success mb-3" target="_blank"> <i class="fa fa-fw fa-download" style="color: white"></i> <font color="white">Download File Asli</font></a>
           </p>
 
-          <iframe class="doc" src="https://docs.google.com/gview?url=<?= $dt['file_surat'];?>&embedded=true" style="width: 100%; height: 500px"></iframe>
           
-          <!-- /Card Columns-->
- 
-
+          <!-- Preview File -->
           <div class="row">
             <div class="col-12" align="center">
-            <iframe class="doc" src="https://docs.google.com/gview?url=https://file-examples-com.github.io/uploads/2017/02/file-sample_100kB.doc&embedded=true" style="width: 100%; height: 500px"></iframe>
+              <?php 
+                $ex = explode('./', $dt['file_surat']);
+                $base_url = $_SERVER['HTTP_HOST'].'/'.$ex[1];
+              ?>
 
+              <iframe src="https://docs.google.com/gview?url=<?= $base_url; ?>&embedded=true" style="width: 100%; height: 500px"></iframe>
             </div>
           </div>
 
