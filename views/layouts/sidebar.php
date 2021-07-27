@@ -78,10 +78,10 @@
           </a>
           <ul class="sidenav-second-level collapse" id="Rekomendasi">
             <li>
-              <a href="admin.php?part=data-pengangkatan">Pengangkatan</a>
+              <a href="admin.php?part=data-surat-pengangkatan">Pengangkatan</a>
             </li>
             <li>
-              <a href="admin.php?part=data-pemberhentian">Pemberhentian</a>
+              <a href="admin.php?part=data-surat-pemberhentian">Pemberhentian</a>
             </li>
           </ul>
         </li>

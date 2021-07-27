@@ -17,6 +17,7 @@ switch ($route) {
     case 'aksi-jenis-surat':
         include "controllers/jenisSuratController.php";
       break;
+
     // Surat Masuk
     case 'data-surat-masuk':
         include "views/surat-masuk/data-surat-masuk.php";
@@ -33,6 +34,7 @@ switch ($route) {
     case 'aksi-surat-masuk':
         include "controllers/suratMasukController.php";
       break;
+
     // Surat Keluar
     case 'data-surat-keluar':
         include "views/surat-keluar/data-surat-keluar.php";
@@ -49,6 +51,7 @@ switch ($route) {
     case 'aksi-surat-keluar':
         include "controllers/suratKeluarController.php";
       break;
+
     // Disposisi
     case 'data-disposisi':
         include "views/disposisi/data-disposisi.php";
@@ -75,6 +78,26 @@ switch ($route) {
       break;
     case 'aksi-info':
         include "controllers/infoController.php";
+      break;
+
+    // Surat Pengangkatan
+    case 'data-surat-pengangkatan':
+      include "views/surat-pengangkatan/data-surat-pengangkatan.php";
+    break;
+    case 'tambah-surat-pengangkatan':
+        include "views/surat-pengangkatan/data-surat-pengangkatan-tambah.php";
+      break;
+    case 'ubah-surat-pengangkatan':
+        include "views/surat-pengangkatan/data-surat-pengangkatan-ubah.php";
+      break;
+    case 'detail-surat-pengangkatan':
+        include "views/surat-pengangkatan/data-surat-pengangkatan-detail.php";
+      break;
+    case 'aksi-surat-pengangkatan':
+        include "controllers/suratPengangkatanController.php";
+      break;
+    case 'cetak-surat-pengangkatan':
+        include "views/cetak-surat/surat-pengangkatan.php";
       break;
 
     default:

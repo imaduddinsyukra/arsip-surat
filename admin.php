@@ -30,6 +30,9 @@ include "assets/conn/cek.php";
   <script type="text/javascript" src="assets/acc/ckeditor/ckeditor.js"></script>
   <link rel="stylesheet" type="text/css" href="assets/acc/ckeditor/style.css">
   <!-- END CKEDITOR -->
+  <!-- FORM DINAMIS -->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+  <!-- END FORM DINAMIS -->
 
 
 </head>
