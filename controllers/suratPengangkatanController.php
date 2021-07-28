@@ -84,7 +84,7 @@
             // 	//mulai memproses upload file
                 if(move_uploaded_file("$nama_file","$folder_move")){ // (Nama Asli File, Folder Tujuan)
                     //catat nama file ke database
-                    $query = "INSERT into tbl_surat_rekomendasi_pengangkatan (id_surat_rekomendasi, no_surat, tgl_surat, sifat, perihal, tujuan_surat, detail_surat, no_surat_lampiran, tgl_surat_lampiran, perihal_surat_lampiran, file_surat, id_user,created_at, updated_at) values ('$uuid','$no_surat','$tgl_surat','$sifat','$perihal','$tujuan_surat','$detail_final','$no_surat_lampiran','$tgl_surat_lampiran','$perihal_surat_lampiran','$folder','$id_user','$created_at','$updated_at')";
+                    $query = "INSERT into tbl_surat_rekomendasi_pengangkatan (id_surat_pengangkatan, no_surat, tgl_surat, sifat, perihal, tujuan_surat, detail_surat, no_surat_lampiran, tgl_surat_lampiran, perihal_surat_lampiran, file_surat, id_user,created_at, updated_at) values ('$uuid','$no_surat','$tgl_surat','$sifat','$perihal','$tujuan_surat','$detail_final','$no_surat_lampiran','$tgl_surat_lampiran','$perihal_surat_lampiran','$folder','$id_user','$created_at','$updated_at')";
                     
                     $hasil = mysql_query($query);
 

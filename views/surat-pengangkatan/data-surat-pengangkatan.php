@@ -44,7 +44,7 @@
                       <td><?= $data['tgl_surat'];?></td>
                       <td><?= $data['tujuan_surat'];?></td>
                       <td align="center">
-                        <a href="admin.php?part=detail-surat-pengangkatan&id_surat_rekomendasi=<?= $data['id_surat_rekomendasi']; ?>" class="btn btn-success mb-3"> <i class="fa fa-fw fa-eye" style="color: white"></i> <font color="white">Detail</font></a>
+                        <a href="admin.php?part=detail-surat-pengangkatan&id_surat_pengangkatan=<?= $data['id_surat_pengangkatan']; ?>" class="btn btn-success mb-3"> <i class="fa fa-fw fa-eye" style="color: white"></i> <font color="white">Detail</font></a>
                       </td>
                       <td align="center">
                       <?php 
@@ -58,17 +58,17 @@
                       <?php 
                       } else { 
                       ?>
-                        <a href="admin.php?part=tambah-disposisi&kategori_surat=<?= $kategori_surat;?>&kode=1&id_surat=<?= $data['id_surat_rekomendasi'];?>" class="btn btn-primary mb-3"> <i class="fa fa-fw fa-clipboard" style="color: white"></i> <font color="white">Tambah Disposisi</font></a>
+                        <a href="admin.php?part=tambah-disposisi&kategori_surat=<?= $kategori_surat;?>&kode=1&id_surat=<?= $data['id_surat_pengangkatan'];?>" class="btn btn-primary mb-3"> <i class="fa fa-fw fa-clipboard" style="color: white"></i> <font color="white">Tambah Disposisi</font></a>
                         <!-- <form action="admin.php?part=tambah-disposisi" method="post">
                             <input type="hidden" value="Surat Masuk" name="kategori_surat">
-                            <input type="hidden" value="<?=$data['id_surat_rekomendasi'];?>" name="id_surat">
+                            <input type="hidden" value="<?=$data['id_surat_pengangkatan'];?>" name="id_surat">
                             <input type="hidden" value="1" name="kode">
                             <button type="submit" class="btn btn-primary mb-3" value="Tambah Disposisi"><i class="fa fa-fw fa-clipboard" style="color: white"></i> Tambah Disposisi</button>
                         </form> -->
                       <?php } ?>
                       </td>
                       <td align="center">
-                        <a href="admin.php?part=ubah-surat-pengangkatan&id_surat_rekomendasi=<?= $data['id_surat_rekomendasi']; ?>" class="btn btn-warning mb-3"> <i class="fa fa-fw fa-pencil" style="color: white"></i> <font color="white">Edit</font></a>
+                        <a href="admin.php?part=ubah-surat-pengangkatan&id_surat_pengangkatan=<?= $data['id_surat_pengangkatan']; ?>" class="btn btn-warning mb-3"> <i class="fa fa-fw fa-pencil" style="color: white"></i> <font color="white">Edit</font></a>
                       </td>
                     </tr>
                   <?php

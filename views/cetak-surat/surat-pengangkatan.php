@@ -1,9 +1,12 @@
 <?php
     ob_start(); 
     include ("../../assets/conn/koneksi.php");
-    $id = $_GET['id_surat_rekomendasi'];
-    $queryy = mysql_query("SELECT * FROM tbl_surat_rekomendasi_pengangkatan join tbl_user using (id_user) WHERE id_surat_rekomendasi = '$id'"); //get the data that will be updated
+    $id = $_GET['id_surat_pengangkatan'];
+    $queryy = mysql_query("SELECT * FROM tbl_surat_rekomendasi_pengangkatan join tbl_user using (id_user) WHERE id_surat_pengangkatan = '$id'"); //get the data that will be updated
     $dt=mysql_fetch_array($queryy);
+
+    $no_surat = $dt['no_surat'];
+    $tgl_surat = $dt['tgl_surat'];
 
     function tanggal_indo($tanggal)
     {
@@ -222,6 +225,6 @@
 	$mpdf->AddPage("P","","","","","15","15","15","15","","","","","","","","","","","","A4");
 	// $mpdf->WriteHTML($content);
     $mpdf->WriteHTML($out);
-    $mpdf->Output("Surat Pengangkatan No. Surat $no_surat.pdf", 'I');
+    $mpdf->Output("Surat Pengangkatan No. $no_surat Tanggal $tgl_surat.pdf", 'D');
 
 ?>
