@@ -8,6 +8,9 @@ if($kategori_surat=="Surat Masuk"){
 elseif($kategori_surat=="Surat Keluar"){
   $queryy = mysql_query("SELECT * FROM tbl_disposisi join tbl_surat_keluar join tbl_jenis_surat join tbl_user where tbl_disposisi.no_surat = tbl_surat_keluar.no_surat and tbl_surat_keluar.id_jenis_surat = tbl_jenis_surat.id_jenis_surat and tbl_disposisi.id_user = tbl_user.id_user and id_disposisi = '$id_disposisi'");
 }
+elseif($kategori_surat=="Surat Pengangkatan"){
+  $queryy = mysql_query("SELECT * FROM tbl_disposisi join tbl_surat_rekomendasi_pengangkatan join tbl_user where tbl_disposisi.no_surat = tbl_surat_rekomendasi_pengangkatan.no_surat and tbl_disposisi.id_user = tbl_user.id_user and id_disposisi = '$id_disposisi'");
+}
 $dt=mysql_fetch_array($queryy)
 
  ?>
@@ -79,10 +82,14 @@ $dt=mysql_fetch_array($queryy)
               <input type="text" name="nama" class="form-control-rounded form-control" required="" value="<?= $dt['no_surat']; ?>" readonly>
             </div>
 
-            <div class="card mb-3">
-                <b>Jenis Surat</b>
-              <input type="text" name="nama" class="form-control-rounded form-control" required="" value="<?= $dt['jenis_surat']; ?>" readonly>
-            </div>
+            <?php
+              if($kategori_surat!="Surat Pengangkatan"){
+            ?>
+              <div class="card mb-3">
+                  <b>Jenis Surat</b>
+                <input type="text" name="nama" class="form-control-rounded form-control" required="" value="<?= $dt['jenis_surat']; ?>" readonly>
+              </div>
+            <?php } ?>
             
             <div class="card mb-3">
                 <b>Tanggal Surat</b>
