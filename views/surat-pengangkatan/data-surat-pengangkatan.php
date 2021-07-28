@@ -16,7 +16,7 @@
                 <a href="admin.php?part=tambah-surat-pengangkatan" class="btn btn-success mb-3"><i class="fa fa-plus" style="color: white"></i> <font size="3" color="white"><u>Tambah Data</u></font></a>
                 <br>
                 <?php
-                  $sqll = "select * from tbl_surat_rekomendasi_pengangkatan order by created_at desc";
+                  $sqll = "select * from tbl_surat_rekomendasi_pengangkatan where keterangan='Aktif' order by created_at desc";
                   $resultt = mysql_query($sqll);
                     if(mysql_num_rows($resultt) > 0){
                 ?> 
@@ -30,6 +30,7 @@
                       <th><p align="center">Detail</p></th>
                       <th><p align="center">Disposisi</p></th>
                       <th><p align="center">Edit</p></th>
+                      <th><p align="center">Hapus</p></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -59,16 +60,18 @@
                       } else { 
                       ?>
                         <a href="admin.php?part=tambah-disposisi&kategori_surat=<?= $kategori_surat;?>&kode=1&id_surat=<?= $data['id_surat_pengangkatan'];?>" class="btn btn-primary mb-3"> <i class="fa fa-fw fa-clipboard" style="color: white"></i> <font color="white">Tambah Disposisi</font></a>
-                        <!-- <form action="admin.php?part=tambah-disposisi" method="post">
-                            <input type="hidden" value="Surat Masuk" name="kategori_surat">
-                            <input type="hidden" value="<?=$data['id_surat_pengangkatan'];?>" name="id_surat">
-                            <input type="hidden" value="1" name="kode">
-                            <button type="submit" class="btn btn-primary mb-3" value="Tambah Disposisi"><i class="fa fa-fw fa-clipboard" style="color: white"></i> Tambah Disposisi</button>
-                        </form> -->
                       <?php } ?>
                       </td>
                       <td align="center">
                         <a href="admin.php?part=ubah-surat-pengangkatan&id_surat_pengangkatan=<?= $data['id_surat_pengangkatan']; ?>" class="btn btn-warning mb-3"> <i class="fa fa-fw fa-pencil" style="color: white"></i> <font color="white">Edit</font></a>
+                      </td>
+                      <td align="center">
+                        <form action="admin.php?part=aksi-surat-pengangkatan" method="post" onClick="return confirm('Apakah Anda Yakin Hapus Data?')">
+                            <input type="hidden" name="parm" value="delete_bos">
+                            <input type="hidden" value="<?=$data['id_surat_pengangkatan'];?>" name="idnya">
+                            <input type='hidden' name='id_user' value="<?= $_SESSION['id_user']; ?>" required>
+                            <button type="submit" class="btn btn-danger" style="width: 70px"><i class="fa fa-fw fa-trash" style="color: white"></i> Hapus</button>
+                        </form>
                       </td>
                     </tr>
                   <?php
