@@ -23,8 +23,7 @@
 <form action="admin.php?part=aksi-surat-pengangkatan" method="post" enctype="multipart/form-data">
 
     <input type="hidden" name="parm" value="add_bos">
-    <input type='hidden' name='id_user' value="<?= $_SESSION['id_user']; ?>" required>   
-    <input type="hidden" name="jenis_rekomendasi" value="Pengangkatan">
+    <input type='hidden' name='id_user' value="<?= $_SESSION['id_user']; ?>" required> 
     <div class="form-group mb-4">
         <label>No. Surat *</label>
         <input type='text' name='no_surat' class="form-control" required>

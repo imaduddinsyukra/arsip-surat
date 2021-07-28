@@ -16,7 +16,7 @@
                 <a href="admin.php?part=tambah-surat-pengangkatan" class="btn btn-success mb-3"><i class="fa fa-plus" style="color: white"></i> <font size="3" color="white"><u>Tambah Data</u></font></a>
                 <br>
                 <?php
-                  $sqll = "select * from tbl_surat_rekomendasi where jenis_rekomendasi = 'Pengangkatan' order by created_at desc";
+                  $sqll = "select * from tbl_surat_rekomendasi_pengangkatan order by created_at desc";
                   $resultt = mysql_query($sqll);
                     if(mysql_num_rows($resultt) > 0){
                 ?> 

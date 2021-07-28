@@ -1,6 +1,6 @@
 <?php
   $id = $_GET['id_surat_rekomendasi']; //get the no which will updated
-  $queryy = mysql_query("SELECT * FROM tbl_surat_rekomendasi join tbl_user using (id_user) WHERE id_surat_rekomendasi = '$id'"); //get the data that will be updated
+  $queryy = mysql_query("SELECT * FROM tbl_surat_rekomendasi_pengangkatan join tbl_user using (id_user) WHERE id_surat_rekomendasi = '$id'"); //get the data that will be updated
   $dt=mysql_fetch_array($queryy);
 
 ?>
