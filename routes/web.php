@@ -100,6 +100,26 @@ switch ($route) {
         include "views/cetak-surat/surat-pengangkatan.php";
       break;
 
+    // Surat Pemberhentian
+    case 'data-surat-pemberhentian':
+      include "views/surat-pemberhentian/data-surat-pemberhentian.php";
+    break;
+    case 'tambah-surat-pemberhentian':
+        include "views/surat-pemberhentian/data-surat-pemberhentian-tambah.php";
+      break;
+    case 'ubah-surat-pemberhentian':
+        include "views/surat-pemberhentian/data-surat-pemberhentian-ubah.php";
+      break;
+    case 'detail-surat-pemberhentian':
+        include "views/surat-pemberhentian/data-surat-pemberhentian-detail.php";
+      break;
+    case 'aksi-surat-pemberhentian':
+        include "controllers/suratpemberhentianController.php";
+      break;
+    case 'cetak-surat-pemberhentian':
+        include "views/cetak-surat/surat-pemberhentian.php";
+      break;
+
     default:
         include "views/not-found.php";
   }
