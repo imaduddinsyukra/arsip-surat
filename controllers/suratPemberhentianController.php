@@ -65,133 +65,38 @@
     }
         elseif($_POST['parm']=='update_bos')
     {
-        $gambar_lama = $_POST['gambar_lama'];
-        $id_surat_pengangkatan = $_POST['id_surat_pengangkatan'];
+        $id_surat_pemberhentian = $_POST['id_surat_pemberhentian'];
 
-         //Mulai memorises data   
-         $nama_file	= $_FILES['data_upload']['tmp_name'];
-         $file_name	= $_FILES['data_upload']['name'];
-         
-         $file_size	= $_FILES['data_upload']['size'];
-         //cari extensi file dengan menggunakan fungsi explode
-         $explode	= explode('.',$file_name);
-         $extensi	= $explode[count($explode)-1];
-         $ex_waktu = str_replace(':','_', $updated_at);
-         $namabaru = "Surat_Pengangkatan_".$tujuan_surat.'_Updated_at_'.$ex_waktu.'.'.$extensi;
-         $file = str_replace(" ","_","$namabaru");
-         // $folder = $base_url."/assets/files/$file";
-         $folder = "./assets/files/surat-rekomendasi/$file";
-         $folder_move = "./assets/files/surat-rekomendasi/$file";
-    
-         $pesan="";
-        if($file_name!=''){
-            //check apakah type file sudah sesuai
-            if(!in_array($extensi,$file_type)){
-                $eror   = true;
-                $pesan .= "Gagal Upload File - Format File Harus .doc, .docx, .pdf, .xls, .xlsx";
-            }
-            if($file_size > $max_size){
-                $eror   = true;
-                $pesan .= " Gagal Upload File - Ukuran File Tidak Boleh Lebih Dari 2MB";
-            }
-            //check ukuran file apakah sudah sesuai
+        //catat nama file ke database
+        $query = "UPDATE tbl_surat_rekomendasi_pemberhentian SET 
+                no_surat = '$no_surat',
+                tgl_surat = '$tgl_surat',
+                tujuan_surat = '$tujuan_surat',
+                perihal = '$perihal',
+                sifat = '$sifat',
+                detail_surat = '$detail_final',
+                id_user = '$id_user',
+                updated_at = '$updated_at'
+                WHERE id_surat_pemberhentian = '$id_surat_pemberhentian'";
         
-            if($eror == true){
-            ?>
-                <script language="JavaScript">
-                    var id_surat = "<?= $id_surat_pengangkatan?>";
-                    var pesan = "<?= $pesan;?>";
-                    alert(pesan);
-                    document.location="./admin.php?part=ubah-surat-pengangkatan&id_surat_pengangkatan=" + id_surat
-                </script>
-            <?php
-            }
-            else{
-            // 	//mulai memproses upload file
-                if(move_uploaded_file("$nama_file","$folder_move")){ // (Nama Asli File, Folder Tujuan)
-                    // Hapus File Lama
-                    unlink("$gambar_lama");
-                    //catat nama file ke database
-                    $query = "UPDATE tbl_surat_rekomendasi_pengangkatan SET 
-                            no_surat = '$no_surat',
-                            tgl_surat = '$tgl_surat',
-                            sifat = '$sifat',
-                            perihal = '$perihal',
-                            tujuan_surat = '$tujuan_surat',
-                            detail_surat = '$detail_final',
-                            no_surat_lampiran = '$no_surat_lampiran',
-                            tgl_surat_lampiran = '$tgl_surat_lampiran',
-                            perihal_surat_lampiran = '$perihal_surat_lampiran',
-                            file_surat = '$folder',
-                            id_user = '$id_user',
-                            updated_at = '$updated_at'
-                            WHERE id_surat_pengangkatan = '$id_surat_pengangkatan'";
-            
-                    $hasil = mysql_query($query);
+        $hasil = mysql_query($query);
 
-                    if ($hasil) { 
-                    ?>
-                        <script language="JavaScript">
-                            alert("Data Berhasil Diubah");
-                            document.location="./admin.php?part=data-surat-pengangkatan"
-                        </script>
-                    <?php
-                    }
-                    else{
-                    ?>
-                        <script language="JavaScript">
-                            var id_surat = "<?= $id_surat_pengangkatan?>";
-                            alert("Data Gagal Diubah");
-                            document.location="./admin.php?part=ubah-surat-pengangkatan&id_surat_pengangkatan=" + id_surat
-                        </script>
-                    <?php
-                    }
-                } else{
-                ?>
-                    <script language="JavaScript">
-                        var id_surat = "<?= $id_surat_pengangkatan?>";
-                        alert("Data Gagal Diubah");
-                        document.location="./admin.php?part=ubah-surat-pengangkatan&id_surat_pengangkatan=" + id_surat
-                    </script>
-                <?php
-                }
-            }
+        if ($hasil) { 
+        ?>
+                <script language="JavaScript">
+                    alert("Data Berhasil Diubah");
+                    document.location="./admin.php?part=data-surat-pemberhentian"
+                </script>
+        <?php
         }
         else{
-            $query = "UPDATE tbl_surat_rekomendasi_pengangkatan SET 
-                    no_surat = '$no_surat',
-                    tgl_surat = '$tgl_surat',
-                    sifat = '$sifat',
-                    perihal = '$perihal',
-                    tujuan_surat = '$tujuan_surat',
-                    detail_surat = '$detail_final',
-                    no_surat_lampiran = '$no_surat_lampiran',
-                    tgl_surat_lampiran = '$tgl_surat_lampiran',
-                    perihal_surat_lampiran = '$perihal_surat_lampiran',
-                    file_surat = '$gambar_lama',
-                    id_user = '$id_user',
-                    updated_at = '$updated_at'
-                    WHERE id_surat_pengangkatan = '$id_surat_pengangkatan'";
-            
-            $hasil = mysql_query($query);
-
-            if ($hasil) { 
-            ?>
-                    <script language="JavaScript">
-                        alert("Data Berhasil Diubah");
-                        document.location="./admin.php?part=data-surat-pengangkatan"
-                    </script>
-            <?php
-            }
-            else{
-            ?>
-                <script language="JavaScript">
-                    var id_surat = "<?= $id_surat_pengangkatan?>";
-                    alert("Data Gagal Diubah");
-                    document.location="./admin.php?part=ubah-surat-pengangkatan&id_surat_pengangkatan=" + id_surat
-                </script>
-            <?php
-            }
+        ?>
+            <script language="JavaScript">
+                var id_surat = "<?= $id_surat_pemberhentian?>";
+                alert("Data Gagal Diubah");
+                document.location="./admin.php?part=ubah-surat-pemberhentian&id_surat_pemberhentian=" + id_surat
+            </script>
+        <?php
         }
           
     //==============================================================================
@@ -201,11 +106,11 @@
         $id = $_POST['idnya'];
         $id_user = $_POST['id_user'];
 
-        $query = "UPDATE tbl_surat_rekomendasi_pengangkatan SET 
+        $query = "UPDATE tbl_surat_rekomendasi_pemberhentian SET 
                 keterangan = 'Tidak Aktif',
                 id_user = '$id_user',
                 updated_at = '$updated_at'
-                WHERE id_surat_pengangkatan = '$id'";
+                WHERE id_surat_pemberhentian = '$id'";
 
         $hasil = mysql_query($query);
 
@@ -213,7 +118,7 @@
         ?>
                 <script language="JavaScript">
                     alert("Data Berhasil Dihapus");
-                    document.location="./admin.php?part=data-surat-pengangkatan"
+                    document.location="./admin.php?part=data-surat-pemberhentian"
                 </script>
         <?php
         }
@@ -221,7 +126,7 @@
         ?>
             <script language="JavaScript">
                 alert("Data Gagal Dihapus");
-                document.location="./admin.php?part=data-surat-pengangkatan"
+                document.location="./admin.php?part=data-surat-pemberhentian"
             </script>
         <?php
         }

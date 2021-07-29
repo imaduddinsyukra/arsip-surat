@@ -1,6 +1,6 @@
 <?php
-  $id = $_GET['id_surat_pengangkatan']; //get the no which will updated
-  $queryy = mysql_query("SELECT * FROM tbl_surat_rekomendasi_pengangkatan WHERE id_surat_pengangkatan = '$id'"); //get the data that will be updated
+  $id = $_GET['id_surat_pemberhentian']; //get the no which will updated
+  $queryy = mysql_query("SELECT * FROM tbl_surat_rekomendasi_pemberhentian WHERE id_surat_pemberhentian = '$id'"); //get the data that will be updated
   $dt=mysql_fetch_array($queryy);
 ?>
 <div id="lb-back">
@@ -27,8 +27,8 @@
             <?php 
               if(mysql_num_rows($queryy) > 0){
             ?>
-              <form action="admin.php?part=aksi-surat-pengangkatan" method="post" enctype="multipart/form-data">
-                <input type='hidden' name='id_surat_pengangkatan' class="form-control" value="<?= $dt['id_surat_pengangkatan'];?>">
+              <form action="admin.php?part=aksi-surat-pemberhentian" method="post" enctype="multipart/form-data">
+                <input type='hidden' name='id_surat_pemberhentian' class="form-control" value="<?= $dt['id_surat_pemberhentian'];?>">
                 <input type='hidden' name='id_user' value="<?= $_SESSION['id_user']; ?>" required>
                 <input type="hidden" name="parm" value="update_bos">
                 <div class="form-group mb-4">
@@ -61,33 +61,6 @@
                       <option value="Rahasia" <?php if($dt['sifat']== "Rahasia"){echo "selected";} ?>>Rahasia</option> 
                     </select>
                 </div>
-              
-                <hr/>
-                <h5>Data Lampiran Surat</h5>
-                <br/>
-
-                <div class="form-group mb-4">
-                    <label>File Scan Surat Lampiran*</label><br>
-                    <span><b><font color="red">Maksimal ukuran file 2 MB dengan Format Document (.doc atau .docx) </font></b> </span><br>
-                    <input type="file" name='data_upload' id="input-file-now-custom-2" class="dropify" data-height="200" data-default-file="<?= $dt['file_surat']; ?>"/>
-                    <input name="gambar_lama" type="hidden" value="<?= $dt['file_surat']; ?>"/>
-                </div>
-
-                <div class="form-group mb-4">
-                    <label>Nomor Surat Lampiran*</label>
-                    <input type='text' name='no_surat_lampiran' class="form-control" value="<?= $dt['no_surat_lampiran']; ?>" required>
-                </div>
-
-                <div class="form-group mb-4">
-                    <label>Tanggal Surat Lampiran*</label>
-                    <input type='date' name='tgl_surat_lampiran' class="form-control" value="<?= $dt['tgl_surat_lampiran']; ?>" required>
-                </div>
-
-                
-                <div class="form-group mb-4">
-                    <label>Perihal Surat Lampiran*</label>
-                    <input type='text' name='perihal_surat_lampiran' class="form-control" value="<?= $dt['perihal_surat_lampiran']; ?>" required>
-                </div>
 
                 <hr/>
                 <h5>Data Pegawai Yang Direkomendasikan</h5>
@@ -104,9 +77,22 @@
                       <input type="text" name="nama_diajukan[]" class="form-control" value="<?= $values['nama'];?>" required>
                   </div>
                   <div class="form-group mb-4">
-                      <label>Jabatan Diajukan*</label>
+                      <label>Tempat Lahir*</label>
+                      <input type="text" name="tempat_lahir_diajukan[]" class="form-control" value="<?= $values['tempat_lahir'];?>" required>
+                  </div>
+                  <div class="form-group mb-4">
+                      <label>Tanggal Lahir*</label>
+                      <input type="date" name="tgl_lahir_diajukan[]" class="form-control" value="<?= $values['tgl_lahir'];?>" required>
+                  </div>
+                  <div class="form-group mb-4">
+                      <label>Jabatan*</label>
                       <input type="text" name="jabatan_diajukan[]" class="form-control" value="<?= $values['jabatan'];?>" required>
                   </div>
+                  <div class="form-group mb-4">
+                      <label>Keterangan*</label>
+                      <input type="text" name="keterangan_diajukan[]" class="form-control" value="<?= $values['keterangan'];?>" required>
+                  </div>
+                  <hr/>
                 <?php } ?>
 
                 <!-- <div class="control-group after-add-more invisible">

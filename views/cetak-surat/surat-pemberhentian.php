@@ -67,7 +67,7 @@
 <?php
     $tgl_surat_terbit = date("Y-m-d", strtotime($dt['created_at']));
 ?>
-<table style=" width:100%; break-after: auto; font-family:times new roman; font-size: 12px">
+<table style=" width:100%; font-family:times new roman;  ">
     <tr>
         <td style="" colspan="4">&nbsp;</td>
         <td  style="">Beringin, <?= tanggal_indo($tgl_surat_terbit);?></td>
@@ -92,7 +92,7 @@
     <tr>
         <td style="width: 15%; ">Sifat</td>
         <td style="width:3%; ">:</td>
-        <td style="">Penting</td>
+        <td style="text-transform: capitalize;"><?= $dt['sifat'];?></td>
     </tr>
     <tr>
         <td style="width: 15%; ">Lampiran</td>
@@ -147,13 +147,14 @@
         </td>
     </tr>
 
-    <tr>
+    <tr style="break-inside: avoid; break-after: auto;">
         <td style=" ">&nbsp;</td>
         <td colspan="4" style="text-align: justify;  ">
-            <table width="100%">
+            <table width="100%" style="break-inside: avoid; break-after: auto;">
                 <?php
                     $no = 1;
                     $datanya = json_decode($dt['detail_surat'], true);
+                    $count = count($datanya);
                     foreach($datanya as $values)
                     {
                 ?>
@@ -191,10 +192,11 @@
             </table>
         </td>
     </tr>
-    
-    <tr>
-        <td>&nbsp;</td>
-        <td colspan="4" style="text-align: justify;">
+</table>
+<table style=" width:100%; font-family:times new roman;  page-break-inside: avoid">
+    <tr style="">
+        <td style="width: 15%; ">&nbsp;</td>
+        <td colspan="4" style="text-align: justify; ">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sehubungan hal tersebut di atas disampaikan kepada Saudara untuk segera menerbitkan Surat Keputusan Pemberhentian Perangkat Desa dimaksud sesuai dengan ketentuan yang berlaku dan untuk mengisi kekosongan agar menunjuk pelaksana tugas sementara dari Perangkat Desa sebelum melakukan penjaringan dan penyaringan.
         </td>
     </tr>
@@ -208,7 +210,7 @@
 
     <tr>
         <td style="  " colspan="4" >&nbsp;</td>
-        <td style="  text-transform: uppercase; text-align: left; " rowspan="3">
+        <td style="  text-transform: uppercase; text-align: left; " rowspan="2">
                 CAMAT TALANG MUANDAU
         </td>
     </tr>
@@ -258,9 +260,10 @@
 	$mpdf = new \Mpdf\Mpdf();
     $mpdf->SetTitle("Surat Rekomendasi Pengangkatan");
     $mpdf->SetDisplayMode('fullpage');
+    $mpdf->shrink_tables_to_fit = 1;
 	$mpdf->AddPage("P","","","","","15","15","15","15","","","","","","","","","","","","A4");
 	// $mpdf->WriteHTML($content);
     $mpdf->WriteHTML($out);
-    $mpdf->Output("Surat Pengangkatan No. $no_surat Tanggal $tgl_surat.pdf", 'I');
+    $mpdf->Output("Surat Pemberhentian No. $no_surat Tanggal $tgl_surat.pdf", 'I');
 
 ?>

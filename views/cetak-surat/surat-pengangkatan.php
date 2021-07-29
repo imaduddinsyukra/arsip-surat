@@ -94,7 +94,7 @@
     <tr>
         <td style="width: 15%; ">Sifat</td>
         <td style="width:3%; ">:</td>
-        <td style="">Penting</td>
+        <td style="text-transform: capitalize;"><?= $dt['sifat'];?></td>
     </tr>
     <tr>
         <td style="width: 15%; ">Lampiran</td>
@@ -144,8 +144,10 @@
         <td colspan="5" style=" ">&nbsp;</td>
     </tr>
 
-    <tr>
-        <td>&nbsp;</td>
+</table>
+<table style=" width:100%; font-family:times new roman; page-break-inside: avoid">
+    <tr style="">
+        <td style="width: 15%; ">&nbsp;</td>
         <td colspan="4" style="text-align: justify;">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sehubungan hal tersebut di atas disampaikan kepada Saudara untuk segera menerbitkan Surat Keputusan Pengangkatan Perangkat Desa dimaksud sesuai dengan ketentuan yang berlaku.
         </td>
