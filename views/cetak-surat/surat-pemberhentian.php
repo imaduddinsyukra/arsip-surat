@@ -264,6 +264,6 @@
 	$mpdf->AddPage("P","","","","","15","15","15","15","","","","","","","","","","","","A4");
 	// $mpdf->WriteHTML($content);
     $mpdf->WriteHTML($out);
-    $mpdf->Output("Surat Pemberhentian No. $no_surat Tanggal $tgl_surat.pdf", 'I');
+    $mpdf->Output("Surat Pemberhentian No. $no_surat Tanggal $tgl_surat.pdf", 'D');
 
 ?>

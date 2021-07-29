@@ -1,5 +1,6 @@
 <?php
 include "assets/conn/cek.php";
+// error_reporting(0);
 ?>
 
 <!DOCTYPE html>
