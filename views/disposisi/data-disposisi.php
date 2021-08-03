@@ -33,7 +33,8 @@
                         <th><p align="center">No. Surat</p></th>
                         <th><p align="center">Kategori Surat</p></th>
                         <th><p align="center">Tujuan Disposisi</p></th>
-                        <th><p align="center">Sifat</p></th>
+                        <!-- <th><p align="center">Sifat</p></th> -->
+                        <th><p align="center">Status</p></th>
                         <th><p align="center">Detail</p></th>
                     </tr>
                   </thead>
@@ -49,9 +50,14 @@
                       <td><?= $data['no_surat'];?></td>
                       <td><?= $data['kategori_surat'];?></td>
                       <td><?= $data['tujuan_disposisi'];?></td>
-                      <td><b><?= $data['sifat'];?></b></td>
+                      <!-- <td><?= $data['sifat'];?></td> -->
+                      <td><b><?= $data['status_disposisi'];?></b></td>
                       <td align="center">
-                        <a href="admin.php?part=detail-disposisi&kategori_surat=<?= $data['kategori_surat'];?>&kode=2&id_disposisi=<?= $data['id_disposisi']; ?>" class="btn btn-success mb-3"> <i class="fa fa-fw fa-eye" style="color: white"></i> <font color="white">Detail</font></a>
+                        <?php if($level == "Umum"){ ?>
+                          <a href="admin.php?part=detail-disposisi&kategori_surat=<?= $data['kategori_surat'];?>&kode=2&id_disposisi=<?= $data['id_disposisi']; ?>" class="btn btn-success mb-3"> <i class="fa fa-fw fa-eye" style="color: white"></i> <font color="white">Detail</font></a>
+                        <?php } else { ?>
+                          <a href="admin.php?part=detail-disposisi-lanjutan&kategori_surat=<?= $data['kategori_surat'];?>&kode=1&id_disposisi=<?= $data['id_disposisi']; ?>" class="btn btn-success mb-3"> <i class="fa fa-fw fa-eye" style="color: white"></i> <font color="white">Detail</font></a>
+                        <?php } ?>
                       </td>
                     </tr>
                   <?php

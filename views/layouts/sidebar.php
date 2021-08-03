@@ -37,9 +37,9 @@
         </li>
         
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="User">
-          <a class="nav-link" href="index.php?p=user">
+          <a class="nav-link" href="admin.php?part=data-pengguna">
             <i class="fa fa-fw fa-users"></i>
-            <span class="nav-link-text">User</span>
+            <span class="nav-link-text">Pengguna</span>
           </a>
         </li>
 
@@ -138,21 +138,21 @@
           </a>
         </li> -->
 
-        <?php } elseif($_SESSION['level']=="Kepala Sekolah"){ ?>
+        <?php } elseif($_SESSION['level']=="Pimpinan"){ ?>
 
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Surat Keluar">
-          <a class="nav-link" href="index.php?p=disposisi_surat">
-            <i class="fa fa-fw fa-envelope-square"></i>
+          <a class="nav-link" href="admin.php?part=data-disposisi">
+            <i class="fa fa-fw fa-envelope"></i>
             <span class="nav-link-text">Disposisi</span>
           </a>
         </li>
 
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Surat Keluar">
-          <a class="nav-link" href="index.php?p=disposisi_lanjutan">
-            <i class="fa fa-fw fa-envelope-square"></i>
+        <!-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Surat Keluar">
+          <a class="nav-link" href="admin.php?part=data-disposisi_lanjutan">
+            <i class="fa fa-fw fa-envelope"></i>
             <span class="nav-link-text">Disposisi Lanjutan</span>
           </a>
-        </li>
+        </li> -->
 
         <?php } else { ?>
 

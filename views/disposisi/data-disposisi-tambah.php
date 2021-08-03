@@ -12,6 +12,9 @@
   elseif($kategori_surat == "Surat Pengangkatan"){
     $queryy = mysql_query("SELECT * FROM tbl_surat_rekomendasi_pengangkatan WHERE id_surat_pengangkatan = '$id_surat'"); //get the data that will be updated
   }
+  elseif($kategori_surat == "Surat Pemberhentian"){
+    $queryy = mysql_query("SELECT * FROM tbl_surat_rekomendasi_pemberhentian WHERE id_surat_pemberhentian = '$id_surat'"); //get the data that will be updated
+  }
   $dt=mysql_fetch_array($queryy);
 
 ?>

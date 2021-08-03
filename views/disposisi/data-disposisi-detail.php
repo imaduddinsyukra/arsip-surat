@@ -11,6 +11,9 @@ elseif($kategori_surat=="Surat Keluar"){
 elseif($kategori_surat=="Surat Pengangkatan"){
   $queryy = mysql_query("SELECT * FROM tbl_disposisi join tbl_surat_rekomendasi_pengangkatan join tbl_user where tbl_disposisi.no_surat = tbl_surat_rekomendasi_pengangkatan.no_surat and tbl_disposisi.id_user = tbl_user.id_user and id_disposisi = '$id_disposisi'");
 }
+elseif($kategori_surat=="Surat Pemberhentian"){
+  $queryy = mysql_query("SELECT * FROM tbl_disposisi join tbl_surat_rekomendasi_pemberhentian join tbl_user where tbl_disposisi.no_surat = tbl_surat_rekomendasi_pemberhentian.no_surat and tbl_disposisi.id_user = tbl_user.id_user and id_disposisi = '$id_disposisi'");
+}
 $dt=mysql_fetch_array($queryy)
 
  ?>
@@ -83,7 +86,7 @@ $dt=mysql_fetch_array($queryy)
             </div>
 
             <?php
-              if($kategori_surat!="Surat Pengangkatan"){
+              if($kategori_surat!="Surat Pengangkatan" && $kategori_surat!="Surat Pemberhentian"){
             ?>
               <div class="card mb-3">
                   <b>Jenis Surat</b>
@@ -130,53 +133,83 @@ $dt=mysql_fetch_array($queryy)
                 <b>Diteruskan Kepada</b>
               <input type="text" name="nama" class="form-control-rounded form-control" required="" value="<?= $dt['tujuan_disposisi']; ?>" readonly>
             </div>
+            
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <b>Status Disposisi</b>
+              <input type="text" name="nama" class="form-control-rounded form-control" required="" value="<?= $dt['status_disposisi']; ?>" readonly>
+            </div>
+          </div>
 
-            <?php 
-              if($dt['tujuan_disposisi']!="Pimpinan"){
-            ?>
-              <div class="card mb-3">
-                <b>Dengan Hormat Harap</b>
-                <input type="text" name="nama" class="form-control-rounded form-control" required="" value="<?= $dt['tindakan']; ?>" readonly>
+          <?php if($dt['status_disposisi']=="Ditolak") { ?>
+            <br/>
+            <div class="row">
+              <div class="col-12">
+                <b>Alasan Ditolak</b>
+                <input type="text" name="nama" class="form-control-rounded form-control" required="" value="<?= $dt['catatan_lanjutan']; ?>" readonly>
               </div>
-              <div class="card mb-3">
-                <b>Batas Waktu</b>
-                <input type="text" name="nama" class="form-control-rounded form-control" required="" value="<?= $dt['batas_waktu']; ?>" readonly>
-              </div>
-            <?php } ?>
+            </div>
+          <?php } ?>
 
-            <div class="card mb-3">
-                Catatan
+          <?php 
+            if($dt['status_disposisi']=="Disetujui"){
+          ?>
+          <hr style="border:5">
+          <h5 align="center">Disposisi Lanjutan</h5>
+          <br/>
+          <div class="card-columns">
+            <div class="card mb-6">
+              <b>Dengan Hormat Harap</b>
+              <input type="text" name="nama" class="form-control-rounded form-control" required="" value="<?= $dt['tindakan_lanjutan']; ?>" readonly>
+            </div>
+            <div class="card mb-12">
+              <b>Batas Waktu</b>
+              <input type="text" name="nama" class="form-control-rounded form-control" required="" value="<?= $dt['batas_waktu_lanjutan']; ?>" readonly>
+            </div>
+            <div class="card mb-12">
+                <b>Catatan</b>
               <input type="text" name="nama" class="form-control-rounded form-control" required="" value="<?= $dt['catatan']; ?>" readonly>
             </div>
-
-            <!-- <div class="card mb-3">
-            Berkas Scan Surat<br>
-              <a href="pages/download_berkas_masuk.php?id_surat_masuk=<?= $dt['id_surat_masuk']; ?>" class="btn btn-success mb-3" target="_blank"> <i class="fa fa-fw fa-download" style="color: white"></i> <font color="white">Download Berkas</font></a>
-
-              
-            </div> -->
-            <!-- Example Social Card-->
-            
+            <div class="card mb-3">
+                <b>File Disposisi Lanjutan</b><br/>
+                <a href="<?= $dt['file_surat_lanjutan']; ?>" class="btn btn-success mb-3" target="_blank" style="width: 250px"> <i class="fa fa-fw fa-download" style="color: white"></i> <font color="white">File Disposisi Lanjutan</font></a>
+            </div>
+            <div class="card mb-3">
+                <b>Surat Disposisi</b><br/>
+                <a href="./views/cetak-surat/surat-disposisi.php?id_disposisi=<?= $dt['id_disposisi']; ?>" class="btn btn-success mb-3" target="_blank" style="width: 250px"> <i class="fa fa-fw fa-download" style="color: white"></i> <font color="white">Download Surat Disposisi</font></a>
+            </div>
           </div>
+          <?php } ?>
 
-          <p align="right">
-            <a href="<?= $dt['file_surat']; ?>" class="btn btn-success mb-3" target="_blank"> <i class="fa fa-fw fa-download" style="color: white"></i> <font color="white">Download Surat</font></a>
+          <?php
+              if($kategori_surat!="Surat Pemberhentian"){
+            ?>
+            <br/><br/>
+            <hr/>
+            <h5 align="center">Lihat Surat</h5>
+            <br/>
+           <!-- Download File -->
+           <p align="right">
+            <a href="<?= $dt['file_surat']; ?>" class="btn btn-success mb-3" target="_blank"> <i class="fa fa-fw fa-download" style="color: white"></i> <font color="white">Download File Asli</font></a>
           </p>
 
-          <iframe class="doc" src="https://docs.google.com/gview?url=<?= $dt['file_surat'];?>&embedded=true" style="width: 100%; height: 500px"></iframe>
           
-          <!-- /Card Columns-->
- 
-
+          <!-- Preview File -->
           <div class="row">
             <div class="col-12" align="center">
-            <iframe class="doc" src="https://docs.google.com/gview?url=<?=$dt['file_surat'];?>&embedded=true" style="width: 100%; height: 500px"></iframe>
-            <iframe class="doc" src="https://docs.google.com/gview?url=https://file-examples-com.github.io/uploads/2017/02/file-sample_100kB.doc&embedded=true" style="width: 100%; height: 500px"></iframe>
+              <?php 
+                $ex = explode('./', $dt['file_surat']);
+                $base_url = $_SERVER['HTTP_HOST'].'/'.$ex[1];
+              ?>
 
+              <iframe src="https://docs.google.com/gview?url=<?= $base_url; ?>&embedded=true" style="width: 100%; height: 500px"></iframe>
             </div>
           </div>
 
-            
+          <?php } ?>
+
+          
           </div>
         </div>
 

@@ -84,7 +84,7 @@ include "assets/conn/cek.php";
           <div class="modal-body">Apakah Anda Yakin Ingin Keluar?</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal" style="color: white">Cancel</button>
-            <a class="btn btn-primary" href="../config/logout.php" style="color: white">Logout</a>
+            <a class="btn btn-primary" href="./assets/conn/logout.php" style="color: white">Logout</a>
           </div>
         </div>
       </div>

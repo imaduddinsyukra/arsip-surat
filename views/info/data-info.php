@@ -20,7 +20,7 @@
                 </button> -->
                 <br><br>
                 <?php
-                  $sqll = "SELECT * from tbl_info join tbl_user using (id_user) order by created_at desc";
+                  $sqll = "SELECT * from tbl_info join tbl_user using (id_user)";
                   $resultt = mysql_query($sqll);
                     if(mysql_num_rows($resultt) > 0){
                 ?> 
@@ -30,7 +30,7 @@
                       <th><p align="center">No.</p></th>
                       <th><p align="center">Judul</p></th>
                       <th><p align="center">Jenis</p></th>
-                      <th><p align="center">Tanggal Dibuat</p></th>
+                      <!-- <th><p align="center">Tanggal Dibuat</p></th> -->
                       <th><p align="center">Dibuat Oleh</p></th>
                       <th><p align="center">Detail</p></th>
                       <th><p align="center">Edit</p></th>
@@ -46,7 +46,7 @@
                       <td><?= $nomor++; ?></td>
                       <td><?= $data['judul_info'];?></td>
                       <td><?= $data['jenis_info'];?></td>
-                      <td><?= $data['created_at'];?></td>
+                      <!-- <td><?= $data['created_at'];?></td> -->
                       <td><?= $data['nama'];?></td>
                       <td align="center">
                         <a class="btn btn-primary" id="tombolUbah" data-toggle="modal" data-target="#modal-edit-<?=$data['id_info'];?>" style="width: 70px"> <font color="white"><i class="fa fa-eye"></i> Detail</font>
@@ -78,7 +78,7 @@
 
   <!-- Modal Detail -->
   <?php
-    $sqll = "SELECT * from tbl_info join tbl_user using (id_user) order by created_at desc";
+    $sqll = "SELECT * from tbl_info join tbl_user using (id_user)";
     $resultt = mysql_query($sqll);
     while($data = mysql_fetch_array($resultt)){
   ?> 

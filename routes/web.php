@@ -18,6 +18,14 @@ switch ($route) {
         include "controllers/jenisSuratController.php";
       break;
 
+    // Pengguna
+    case 'data-pengguna':
+        include "views/pengguna/data-pengguna.php";
+      break;
+    case 'aksi-pengguna':
+        include "controllers/penggunaController.php";
+      break;
+
     // Surat Masuk
     case 'data-surat-masuk':
         include "views/surat-masuk/data-surat-masuk.php";
@@ -61,6 +69,9 @@ switch ($route) {
       break;
     case 'detail-disposisi':
         include "views/disposisi/data-disposisi-detail.php";
+      break;
+    case 'detail-disposisi-lanjutan':
+        include "views/disposisi/data-disposisi-detail-lanjutan.php";
       break;
     case 'aksi-disposisi':
         include "controllers/disposisiController.php";
