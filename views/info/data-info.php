@@ -1,3 +1,6 @@
+<?php 
+error_reporting(0);
+?>
 <div class="content-wrapper">
     <div class="container-fluid">
       <!-- Breadcrumbs-->
@@ -13,14 +16,37 @@
           <i class="fa fa-table"></i> Tabel Data Info</div>
           <div class="card-body">
               <div class="table-responsive">
-                <a href="admin.php?part=tambah-info" class="btn btn-success mb-3"><i class="fa fa-plus" style="color: white"></i> <font size="3" color="white"><u>Tambah Data</u></font></a>
+                <div class="row">
+                  <div class="col-6">
+                    <a href="admin.php?part=tambah-info" class="btn btn-success mb-3"><i class="fa fa-plus" style="color: white"></i> <font size="3" color="white"><u>Tambah Data</u></font></a>
+                  </div>
+                  <div class="col-6">
+                    <form action="" method="post">
+                      <select class="form-control" name="jenis_info" onchange='this.form.submit()'>
+                        <option value="" <?php if($_POST['jenis_info']==""){echo "selected";} ?> selected>Tampilkan Semua Info</option>
+                        <option value="DIKLAT" <?php if($_POST['jenis_info']=="DIKLAT"){echo "selected";} ?>>DIKLAT</option>
+                        <option value="BLT" <?php if($_POST['jenis_info']=="BLT"){echo "selected";} ?>>BLT</option>
+                        <option value="BUMIL" <?php if($_POST['jenis_info']=="BUMIL"){echo "selected";} ?>>BUMIL</option>
+                        <option value="PKH" <?php if($_POST['jenis_info']=="PKH"){echo "selected";} ?>>PKH</option>
+                      </select>
+                      </select>
+                    </form>
+                  </div>
+                </div>
                 <!-- 
                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-tambah">
                   <i class="fa fa-plus"></i> Tambah Data
                 </button> -->
                 <br><br>
                 <?php
-                  $sqll = "SELECT * from tbl_info join tbl_user using (id_user)";
+                  if($_POST['jenis_info']==""){
+                    $sqll = "SELECT * from tbl_info join tbl_user using (id_user)";
+                  }
+                  else{
+                    $show_jenis = $_POST['jenis_info'];
+                    $sqll = "SELECT * from tbl_info join tbl_user using (id_user) where jenis_info = '$show_jenis'";
+                  }
+                  
                   $resultt = mysql_query($sqll);
                     if(mysql_num_rows($resultt) > 0){
                 ?> 
@@ -111,6 +137,12 @@
                   <label for="exampleInputEmail1"><b>Isi Info</b></label>
                   <p>
                     <?= $data['isi_info'];?>
+                  </p>
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputEmail1"><b>Download File Info</b></label>
+                  <p>
+                    <a href="<?= $data['file_surat']; ?>" class="btn btn-success mb-3" target="_blank"> <i class="fa fa-fw fa-download" style="color: white"></i> <font color="white">Download File</font></a>
                   </p>
                 </div>
                 <hr/>

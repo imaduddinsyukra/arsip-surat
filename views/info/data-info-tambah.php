@@ -45,6 +45,12 @@
         <label>Isi Info*</label>
         <textarea placeholder="Masukkan Jenis Info" class="ckeditor" id="ckedtor" name="isi_info" required></textarea>
     </div>
+
+    <div class="form-group mb-4">
+        <label>File Info *</label><br>
+        <span><b><font color="red">Maksimal ukuran file 2 MB dengan Format Document (.doc, .docx, .xl, .xls, .pdf) </font></b> </span><br>
+        <input type="file" name='data_upload' id="input-file-now-custom-2" class="dropify" data-height="200" required="" />
+    </div>
     
     <button type="submit" class="btn btn-sm btn-success login-submit-cs">Simpan</button>
 </form>
