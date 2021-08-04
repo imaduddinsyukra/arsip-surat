@@ -46,9 +46,16 @@
         
         <?php } elseif($_SESSION['level']=="Umum"){ ?>
 
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Surat Keluar">
-          <a class="nav-link" href="admin.php?part=data-info">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Pengumuman">
+          <a class="nav-link" href="admin.php?part=data-pengumuman">
             <i class="fa fa-fw fa-bullhorn"></i>
+            <span class="nav-link-text">Pengumuman</span>
+          </a>
+        </li>
+
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Info">
+          <a class="nav-link" href="admin.php?part=data-info">
+            <i class="fa fa-fw fa-info"></i>
             <span class="nav-link-text">Info</span>
           </a>
         </li>
@@ -86,49 +93,26 @@
           </ul>
         </li>
 
-        <!-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Surat Masuk">
-          <a class="nav-link" href="admin.php?part=data-surat-masuk">
-            <i class="fa fa-fw fa-envelope"></i>
-            <span class="nav-link-text">Surat Masuk</span>
-          </a>
-        </li>
-
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Surat Keluar">
-          <a class="nav-link" href="admin.php?part=data-surat-keluar">
-            <i class="fa fa-fw fa-envelope-open"></i>
-            <span class="nav-link-text">Surat Keluar</span>
-          </a>
-        </li>
-
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Surat Keluar">
-          <a class="nav-link" href="admin.php?part=data-disposisi">
-            <i class="fa fa-fw fa-envelope-square"></i>
-            <span class="nav-link-text">Disposisi</span>
-          </a>
-        </li> -->
-
-        <!-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Jenis Surat">
-          <a class="nav-link" href="admin.php?part=data-jenis-surat">
-            <i class="fa fa-fw fa-envelope-open"></i>
-            <span class="nav-link-text">Jenis Surat</span>
-          </a>
-        </li> -->
-
-
-        <!-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Laporan">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Laporan">
           <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-print"></i>
             <span class="nav-link-text">Laporan</span>
           </a>
           <ul class="sidenav-second-level collapse" id="collapseComponents">
             <li>
-              <a href="admin.php?part=laporan-surat-masuk">Surat Masuk</a>
+              <a href="admin.php?part=laporan&kategori=Surat Masuk">Surat Masuk</a>
             </li>
             <li>
-              <a href="admin.php?part=laporan-surat-masuk">Surat Keluar</a>
+              <a href="admin.php?part=laporan&kategori=Surat Keluar">Surat Keluar</a>
+            </li>
+            <li>
+              <a href="admin.php?part=laporan&kategori=Surat Pengangkatan">Surat Rekomendasi Pengangkatan</a>
+            </li>
+            <li>
+              <a href="admin.php?part=laporan&kategori=Surat Pemberhentian">Surat Rekomendasi Pemberhentian</a>
             </li>
           </ul>
-        </li> -->
+        </li>
         
         
         <!-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="User">
