@@ -55,6 +55,7 @@
                     <label>Sifat *</label>
                     <select name="sifat" class="form-control" required>
                       <option value="0" disabled>Pilih Sifat</option>
+                      <option value="Biasa" <?php if($dt['sifat']== "Biasa"){echo "selected";} ?>>Biasa</option> 
                       <option value="Penting" <?php if($dt['sifat']== "Penting"){echo "selected";} ?>>Penting</option> 
                       <option value="Sangat Penting" <?php if($dt['sifat']== "Sangat Penting"){echo "selected";} ?>>Sangat Penting</option>  
                       <option value="Segera" <?php if($dt['sifat']== "Segera"){echo "selected";} ?>>Segera</option>  
