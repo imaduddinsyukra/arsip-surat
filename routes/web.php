@@ -18,6 +18,14 @@ switch ($route) {
         include "controllers/jenisSuratController.php";
       break;
 
+    // Pengumuman
+    case 'data-pengumuman':
+        include "views/pengumuman/data-pengumuman.php";
+      break;
+    case 'aksi-pengumuman':
+        include "controllers/pengumumanController.php";
+      break;
+
     // Pengguna
     case 'data-pengguna':
         include "views/pengguna/data-pengguna.php";
@@ -130,6 +138,14 @@ switch ($route) {
     case 'cetak-surat-pemberhentian':
         include "views/cetak-surat/surat-pemberhentian.php";
       break;
+
+    // Laporan
+    case 'laporan':
+      include "views/laporan/laporan.php";
+    break;
+    case 'aksi-laporan':
+        include "controllers/jenisSuratController.php";
+    break;
 
     default:
         include "views/not-found.php";
