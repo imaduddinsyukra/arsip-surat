@@ -15,6 +15,7 @@ error_reporting(0);
         <div class="card-header">
           <i class="fa fa-table"></i> Tabel Data Info</div>
           <div class="card-body">
+            <?php if($_SESSION['level']=="Umum"){ ?>
               <div class="table-responsive">
                 <div class="row">
                   <div class="col-6">
@@ -100,6 +101,85 @@ error_reporting(0);
                     echo mysql_error();
                   }
                 ?>           
+              
+              
+            <?php } elseif($_SESSION['level']=="Pimpinan"){ ?> 
+              
+              <div class="table-responsive">
+                <div class="row">
+                  <div class="col-6">
+                    &nbsp;
+                  </div>
+                  <div class="col-6">
+                    <form action="" method="post">
+                      <select class="form-control" name="jenis_info" onchange='this.form.submit()'>
+                        <option value="" <?php if($_POST['jenis_info']==""){echo "selected";} ?> selected>Tampilkan Semua Info</option>
+                        <option value="DIKLAT" <?php if($_POST['jenis_info']=="DIKLAT"){echo "selected";} ?>>DIKLAT</option>
+                        <option value="BLT" <?php if($_POST['jenis_info']=="BLT"){echo "selected";} ?>>BLT</option>
+                        <option value="BUMIL" <?php if($_POST['jenis_info']=="BUMIL"){echo "selected";} ?>>BUMIL</option>
+                        <option value="PKH" <?php if($_POST['jenis_info']=="PKH"){echo "selected";} ?>>PKH</option>
+                      </select>
+                      </select>
+                    </form>
+                  </div>
+                </div>
+                <!-- 
+                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modal-tambah">
+                  <i class="fa fa-plus"></i> Tambah Data
+                </button> -->
+                <br><br>
+                <?php
+                  if($_POST['jenis_info']==""){
+                    $sqll = "SELECT * from tbl_info join tbl_user using (id_user)";
+                  }
+                  else{
+                    $show_jenis = $_POST['jenis_info'];
+                    $sqll = "SELECT * from tbl_info join tbl_user using (id_user) where jenis_info = '$show_jenis'";
+                  }
+                  
+                  $resultt = mysql_query($sqll);
+                    if(mysql_num_rows($resultt) > 0){
+                ?> 
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th><p align="center">No.</p></th>
+                      <th><p align="center">Judul</p></th>
+                      <th><p align="center">Jenis</p></th>
+                      <!-- <th><p align="center">Tanggal Dibuat</p></th> -->
+                      <th><p align="center">Dibuat Oleh</p></th>
+                      <th><p align="center">Detail</p></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  <?php
+                    $nomor=1;
+                    while($data = mysql_fetch_array($resultt)){
+                  ?>              
+                    <tr>
+                      <td><?= $nomor++; ?></td>
+                      <td><?= $data['judul_info'];?></td>
+                      <td><?= $data['jenis_info'];?></td>
+                      <!-- <td><?= $data['created_at'];?></td> -->
+                      <td><?= $data['nama'];?></td>
+                      <td align="center">
+                        <a class="btn btn-primary" id="tombolUbah" data-toggle="modal" data-target="#modal-edit-<?=$data['id_info'];?>" style="width: 70px"> <font color="white"><i class="fa fa-eye"></i> Detail</font>
+                        </a>
+                      </td>
+                    </tr>
+                  <?php
+                    }
+                  ?>
+                  </tbody>
+                </table>
+                <?php
+                  }else{
+                    echo '<h3 align="center">Data Tidak Ditemukan!</h3>';
+                    echo mysql_error();
+                  }
+                ?>
+                
+            <?php } ?> 
                 
 
   <!-- Modal Detail -->

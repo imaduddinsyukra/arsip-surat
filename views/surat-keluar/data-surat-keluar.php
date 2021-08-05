@@ -11,7 +11,9 @@
       <div class="card mb-3">
         <div class="card-header">
           <i class="fa fa-table"></i> Tabel Data Surat Keluar</div>
-          <div class="card-body">
+          <div class="card-body"> 
+          <?php if($_SESSION['level']=="Umum"){ ?> 
+              
               <div class="table-responsive">
                 <a href="admin.php?part=tambah-surat-keluar" class="btn btn-success mb-3"><i class="fa fa-plus" style="color: white"></i> <font size="3" color="white"><u>Tambah Data</u></font></a>
               <br>
@@ -82,8 +84,56 @@
                     echo mysql_error();
                   }
                 ?>            
-                
+                 
+          <?php } elseif($_SESSION['level']=="Pimpinan"){ ?> 
 
+              <div class="table-responsive">
+                
+                <?php
+                  $sqll = "select * from tbl_surat_keluar order by created_at desc";
+                  $resultt = mysql_query($sqll);
+                    if(mysql_num_rows($resultt) > 0){
+                ?> 
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th><p align="center">No.</p></th>
+                      <th><p align="center">No. Surat</p></th>
+                      <th><p align="center">Tanggal Surat</p></th>
+                      <th><p align="center">Tujuan</p></th>
+                      <th><p align="center">Detail</p></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  <?php
+                    $nomor=1;
+                    while($data = mysql_fetch_array($resultt)){
+                    $no_surat = $data['no_surat'];
+                  ?>              
+                    <tr>
+                      <td><?= $nomor++; ?></td>
+                      <td><?= $data['no_surat'];?></td>
+                      <td><?= $data['tgl_surat'];?></td>
+                      <td><?= $data['tujuan'];?></td>
+                      <td align="center">
+                        <a href="admin.php?part=detail-surat-keluar&id_surat_keluar=<?= $data['id_surat_keluar']; ?>" class="btn btn-success mb-3"> <i class="fa fa-fw fa-eye" style="color: white"></i> <font color="white">Detail</font></a>
+                      </td>
+                     
+                    </tr>
+                  <?php
+                    }
+                  ?>
+                  </tbody>
+                </table>
+                <?php
+                  }else{
+                    echo '<h3 align="center">Data Tidak Ditemukan!</h3>';
+                    echo mysql_error();
+                  }
+                ?>            
+                
+ 
+          <?php } ?> 
 
 <!-- ==========================================================================   -->
               </div>

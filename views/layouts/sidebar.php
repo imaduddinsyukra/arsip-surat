@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <a class="navbar-brand" href="admin.php"><img src="assets/acc/logo.png" width="10%"> &nbsp; Sistem Informasi Pengarsipan Surat</a>
+    <a class="navbar-brand" href="admin.php"><img src="assets/acc/gambar/bengkalis.png" width="10%"> &nbsp; Sistem Informasi Pengarsipan Surat</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -131,12 +131,63 @@
           </a>
         </li>
 
-        <!-- <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Surat Keluar">
-          <a class="nav-link" href="admin.php?part=data-disposisi_lanjutan">
-            <i class="fa fa-fw fa-envelope"></i>
-            <span class="nav-link-text">Disposisi Lanjutan</span>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Info">
+          <a class="nav-link" href="admin.php?part=data-info">
+            <i class="fa fa-fw fa-info"></i>
+            <span class="nav-link-text">Info</span>
           </a>
-        </li> -->
+        </li>
+
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Persuratan">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#Persuratan" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-envelope"></i>
+            <span class="nav-link-text">Persuratan</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="Persuratan">
+            <li>
+              <a href="admin.php?part=data-surat-masuk">Surat Masuk</a>
+            </li>
+            <li>
+              <a href="admin.php?part=data-surat-keluar">Surat Keluar</a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Rekomendasi">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#Rekomendasi" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-clipboard"></i>
+            <span class="nav-link-text">Rekomendasi</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="Rekomendasi">
+            <li>
+              <a href="admin.php?part=data-surat-pengangkatan">Pengangkatan</a>
+            </li>
+            <li>
+              <a href="admin.php?part=data-surat-pemberhentian">Pemberhentian</a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Laporan">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-print"></i>
+            <span class="nav-link-text">Laporan</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="collapseComponents">
+            <li>
+              <a href="admin.php?part=laporan&kategori=Surat Masuk">Surat Masuk</a>
+            </li>
+            <li>
+              <a href="admin.php?part=laporan&kategori=Surat Keluar">Surat Keluar</a>
+            </li>
+            <li>
+              <a href="admin.php?part=laporan&kategori=Surat Pengangkatan">Surat Rekomendasi Pengangkatan</a>
+            </li>
+            <li>
+              <a href="admin.php?part=laporan&kategori=Surat Pemberhentian">Surat Rekomendasi Pemberhentian</a>
+            </li>
+          </ul>
+        </li>
 
         <?php } else { ?>
 
