@@ -12,9 +12,9 @@ include "assets/conn/cek.php";
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>Sistem Informasi Pengarsipan Surat</title>
+  <title>Sistem Informasi Perkantoran Berbasis Elektronik</title>
 
-  <link rel="shortcut icon" type="image/x-icon" href="assets/acc/logo.png">
+  <link rel="shortcut icon" type="image/x-icon" href="assets/acc/gambar/bengkalis.png">
   <!-- Bootstrap core CSS-->
   <link href="assets/acc/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->

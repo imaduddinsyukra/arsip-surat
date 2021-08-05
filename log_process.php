@@ -12,7 +12,7 @@ require_once("assets/conn/koneksi.php");
   $_SESSION['id_user'] = $hasil['id_user'];
   $_SESSION['nama'] = $hasil['nama'];
   $_SESSION['level'] = $hasil['level'];
-  $_SESSION['foto'] = $hasil['foto'];
+  // $_SESSION['foto'] = $hasil['foto'];
   $_SESSION['username'] = $username;
 
 ?>

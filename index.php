@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login - Sistem Informasi Pengarsipan Surat</title>
-  <link rel="shortcut icon" type="image/x-icon" href="assets/res/img/logox.png">
+  <title>Login - Sistem Informasi Perkantoran Berbasis Elektronik</title>
+  <link rel="shortcut icon" type="image/x-icon" href="assets/acc/gambar/bengkalis.png">
   <link rel="stylesheet" href="assets/res/css/style.css">
   <link rel="stylesheet" href="assets/res/plugin/FontAwesome/css/font-awesome.min.css">
 </head>
@@ -12,8 +12,10 @@
   <div id="container" data-background="assets/res/img/bg.jpg">
     <div class="box box-sm">
       <div class="logo">
-      <p align="center"><img src="assets/res/img/logox.png" width="30%"></p>
-        <h1 style="font-size:18pt;letter-spacing:-3px;" align="center">SISTEM INFORMASI <br>PENGARSIPAN SURAT</h1>
+        <h1 style="font-size:18pt;letter-spacing:-3px;" align="center">S I M P A T I K</h1>
+        <h3 style="padding-top: 10px;letter-spacing:1px;" align="center">Sistem Informasi Perkantoran Berbasis Elektronik</h3>
+        <br/><br/>
+      <p align="center"><img src="assets/acc/gambar/bengkalis.png" width="30%"></p>
       </div>
       <div class="form">
         <form action="log_process.php" method="POST">
