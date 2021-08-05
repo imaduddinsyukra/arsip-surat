@@ -75,6 +75,9 @@ $kat = $_GET['kategori'];
                   $resultt = mysql_query($sqll);
                     if(mysql_num_rows($resultt) > 0){
                 ?> 
+
+                <a href="./views/laporan/cetak-laporan.php?tgl_mulai=<?= $_POST['tgl_mulai']; ?>&tgl_selesai=<?= $_POST['tgl_selesai'];?>&kategori=<?= $kat;?>" class="btn btn-success mb-3" target="_blank"> <i class="fa fa-fw fa-download" style="color: white"></i> <font color="white">Download Laporan</font></a>
+
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
