@@ -124,18 +124,25 @@
 
         <?php } elseif($_SESSION['level']=="Pimpinan"){ ?>
 
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Surat Keluar">
-          <a class="nav-link" href="admin.php?part=data-disposisi">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Disposisi">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#Disposisi" data-parent="#exampleAccordion">
             <i class="fa fa-fw fa-envelope"></i>
             <span class="nav-link-text">Disposisi</span>
           </a>
-        </li>
-
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Info">
-          <a class="nav-link" href="admin.php?part=data-info">
-            <i class="fa fa-fw fa-info"></i>
-            <span class="nav-link-text">Info</span>
-          </a>
+          <ul class="sidenav-second-level collapse" id="Disposisi">
+            <li>
+              <a href="admin.php?part=data-disposisi&kategori=Surat Masuk">Surat Masuk</a>
+            </li>
+            <li>
+              <a href="admin.php?part=data-disposisi&kategori=Surat Keluar">Surat Keluar</a>
+            </li>
+            <li>
+              <a href="admin.php?part=data-disposisi&kategori=Surat Pengangkatan">Rekomendasi Pengangkatan</a>
+            </li>
+            <li>
+              <a href="admin.php?part=data-disposisi&kategori=Surat Pemberhentian">Rekomendasi Pemberhentian</a>
+            </li>
+          </ul>
         </li>
 
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Persuratan">
@@ -166,6 +173,13 @@
               <a href="admin.php?part=data-surat-pemberhentian">Pemberhentian</a>
             </li>
           </ul>
+        </li>
+
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Info">
+          <a class="nav-link" href="admin.php?part=data-info">
+            <i class="fa fa-fw fa-info"></i>
+            <span class="nav-link-text">Info</span>
+          </a>
         </li>
 
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Laporan">

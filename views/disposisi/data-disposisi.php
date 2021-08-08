@@ -20,7 +20,9 @@
                     $sqll = "select * from tbl_disposisi where tujuan_disposisi = 'Umum' or tujuan_disposisi = 'Pimpinan' order by id_disposisi desc";
                   }
                   else{
-                    $sqll = "select * from tbl_disposisi where tujuan_disposisi = '$level' order by id_disposisi desc";
+                    $kategori_surat = $_GET['kategori'];
+
+                    $sqll = "SELECT * from tbl_disposisi where tujuan_disposisi = '$level' and kategori_surat = '$kategori_surat' order by id_disposisi desc"; 
                   }
                   $resultt = mysql_query($sqll);
                     if(mysql_num_rows($resultt) > 0){

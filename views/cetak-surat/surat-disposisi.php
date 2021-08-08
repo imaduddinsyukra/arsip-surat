@@ -20,6 +20,8 @@
     $queryy = mysql_query("SELECT *, tbl_disposisi.updated_at as tgl_terbit FROM tbl_disposisi join tbl_surat_rekomendasi_pemberhentian join tbl_user where tbl_disposisi.no_surat = tbl_surat_rekomendasi_pemberhentian.no_surat and tbl_disposisi.id_user = tbl_user.id_user and id_disposisi = '$id_disposisi'");
     }
     $dt=mysql_fetch_array($queryy);
+    $no_suratnya = $dt['no_surat'];
+    $tgl_suratnya = $dt['tgl_surat'];
 
 
     function tanggal_indo($tanggal)
@@ -95,7 +97,11 @@
 
 <table style=" border: 2px solid black; border-bottom: 1px solid black; width:100%; break-after: auto; font-family:times new roman; font-size: 12px">
     <tr>
-        <td style="font-weight: bold; text-transform: uppercase; width: 15%;">surat dari</td>
+        <?php if($kategori_surat=="Surat Masuk"){ ?>
+            <td style="font-weight: bold; text-transform: uppercase; width: 15%;">surat dari</td>
+        <?php } else { ?>
+            <td style="font-weight: bold; text-transform: uppercase; width: 15%;">surat untuk</td>
+        <?php } ?>
         <td style="font-weight: bold; text-transform: uppercase; width: 3%;">:</td>
         <td style="font-weight: bold; text-transform: uppercase; width: 30%;"><?= $dt['surat_dari_lanjutan'];?></td>
         <td style="font-weight: bold; text-transform: uppercase;">diterima tgl</td>
@@ -296,6 +302,6 @@
 	$mpdf->AddPage("P","","","","","10","10","10","10","","","","","","","","","","","","A4");
 	// $mpdf->WriteHTML($content);
     $mpdf->WriteHTML($out);
-    $mpdf->Output("Surat Pengangkatan No. $no_surat Tanggal $tgl_surat.pdf", 'I');
+    $mpdf->Output("Surat Disposisi No. $no_suratnya Tanggal $tgl_suratnya.pdf", 'D');
 
 ?>

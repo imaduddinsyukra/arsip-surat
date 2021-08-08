@@ -3,16 +3,16 @@ $id_disposisi = $_GET['id_disposisi']; //get the no which will updated
 $kode = $_GET['kode']; //get the no which will updated
 $kategori_surat = $_GET['kategori_surat']; //get the no which will updated
 if($kategori_surat=="Surat Masuk"){
-  $queryy = mysql_query("SELECT * FROM tbl_disposisi join tbl_surat_masuk join tbl_jenis_surat join tbl_user where tbl_disposisi.no_surat = tbl_surat_masuk.no_surat and tbl_surat_masuk.id_jenis_surat = tbl_jenis_surat.id_jenis_surat and tbl_disposisi.id_user = tbl_user.id_user and id_disposisi = '$id_disposisi'"); 
+  $queryy = mysql_query("SELECT *, tbl_surat_masuk.pengirim as asalnya FROM tbl_disposisi join tbl_surat_masuk join tbl_jenis_surat join tbl_user where tbl_disposisi.no_surat = tbl_surat_masuk.no_surat and tbl_surat_masuk.id_jenis_surat = tbl_jenis_surat.id_jenis_surat and tbl_disposisi.id_user = tbl_user.id_user and id_disposisi = '$id_disposisi'"); 
 }
 elseif($kategori_surat=="Surat Keluar"){
-  $queryy = mysql_query("SELECT * FROM tbl_disposisi join tbl_surat_keluar join tbl_jenis_surat join tbl_user where tbl_disposisi.no_surat = tbl_surat_keluar.no_surat and tbl_surat_keluar.id_jenis_surat = tbl_jenis_surat.id_jenis_surat and tbl_disposisi.id_user = tbl_user.id_user and id_disposisi = '$id_disposisi'");
+  $queryy = mysql_query("SELECT *, tbl_surat_keluar.tujuan as asalnya FROM tbl_disposisi join tbl_surat_keluar join tbl_jenis_surat join tbl_user where tbl_disposisi.no_surat = tbl_surat_keluar.no_surat and tbl_surat_keluar.id_jenis_surat = tbl_jenis_surat.id_jenis_surat and tbl_disposisi.id_user = tbl_user.id_user and id_disposisi = '$id_disposisi'");
 }
 elseif($kategori_surat=="Surat Pengangkatan"){
-  $queryy = mysql_query("SELECT * FROM tbl_disposisi join tbl_surat_rekomendasi_pengangkatan join tbl_user where tbl_disposisi.no_surat = tbl_surat_rekomendasi_pengangkatan.no_surat and tbl_disposisi.id_user = tbl_user.id_user and id_disposisi = '$id_disposisi'");
+  $queryy = mysql_query("SELECT *, tbl_surat_rekomendasi_pengangkatan.tujuan_surat as asalnya FROM tbl_disposisi join tbl_surat_rekomendasi_pengangkatan join tbl_user where tbl_disposisi.no_surat = tbl_surat_rekomendasi_pengangkatan.no_surat and tbl_disposisi.id_user = tbl_user.id_user and id_disposisi = '$id_disposisi'");
 }
 elseif($kategori_surat=="Surat Pemberhentian"){
-  $queryy = mysql_query("SELECT * FROM tbl_disposisi join tbl_surat_rekomendasi_pemberhentian join tbl_user where tbl_disposisi.no_surat = tbl_surat_rekomendasi_pemberhentian.no_surat and tbl_disposisi.id_user = tbl_user.id_user and id_disposisi = '$id_disposisi'");
+  $queryy = mysql_query("SELECT *, tbl_surat_rekomendasi_pemberhentian.tujuan_surat as asalnya FROM tbl_disposisi join tbl_surat_rekomendasi_pemberhentian join tbl_user where tbl_disposisi.no_surat = tbl_surat_rekomendasi_pemberhentian.no_surat and tbl_disposisi.id_user = tbl_user.id_user and id_disposisi = '$id_disposisi'");
 }
 $dt=mysql_fetch_array($queryy);
 
@@ -51,9 +51,9 @@ $dt=mysql_fetch_array($queryy);
                 <i class="fa fa-fw fa-times"></i> Tolak
               </button>
             <?php } elseif($dt['status_disposisi']=="Disetujui"){ ?>
-              <a href="./admin.php?part=data-disposisi" class="btn btn-primary mb-3"> <i class="fa fa-fw fa-arrow-left"></i> Kembali</a>
+              <a href="./admin.php?part=data-disposisi&kategori=<?= $kategori_surat;?>" class="btn btn-primary mb-3"> <i class="fa fa-fw fa-arrow-left"></i> Kembali</a>
             <?php } elseif($dt['status_disposisi']=="Ditolak"){ ?>
-              <a href="./admin.php?part=data-disposisi" class="btn btn-primary mb-3"> <i class="fa fa-fw fa-arrow-left"></i> Kembali</a>
+              <a href="./admin.php?part=data-disposisi&kategori=<?= $kategori_surat;?>" class="btn btn-primary mb-3"> <i class="fa fa-fw fa-arrow-left"></i> Kembali</a>
             <?php } ?>
 
             <br/><br/>
@@ -131,6 +131,11 @@ $dt=mysql_fetch_array($queryy);
             <div class="card mb-3">
                 <b>Diteruskan Kepada</b>
               <input type="text" name="nama" class="form-control-rounded form-control" required="" value="<?= $dt['tujuan_disposisi']; ?>" readonly>
+            </div>
+           
+            <div class="card mb-3">
+                <b>Catatan</b>
+              <input type="text" name="catatan" class="form-control-rounded form-control" required="" value="<?= $dt['catatan']; ?>" readonly>
             </div>
 
             <div class="row">
@@ -259,10 +264,27 @@ $dt=mysql_fetch_array($queryy);
                 <input type="hidden" name="kategori_surat" value="<?= $kategori_surat;?>">
                 <input type='hidden' name='id_user_lanjutan' value="<?= $_SESSION['id_user']; ?>" required> 
 
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Surat Dari</label>
-                  <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Surat Dari" name="surat_dari_lanjutan" required>
-                </div>
+                <?php if($kategori_surat=="Surat Masuk"){ ?>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Surat Dari</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Surat Dari" name="surat_dari_lanjutan" value="<?= $dt['asalnya'];?>" required readonly>
+                  </div>
+                <?php } elseif($kategori_surat=="Surat Keluar"){ ?>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Surat Untuk</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Surat Untuk" name="surat_dari_lanjutan" value="<?= $dt['asalnya'];?>" required readonly>
+                  </div>
+                <?php } elseif($kategori_surat=="Surat Pengangkatan"){ ?>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Surat Untuk</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Surat Untuk" name="surat_dari_lanjutan" value="<?= $dt['asalnya'];?>" required readonly>
+                  </div>
+                <?php } elseif($kategori_surat=="Surat Pemberhentian"){ ?>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Surat Untuk</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Masukkan Surat Untuk" name="surat_dari_lanjutan" value="<?= $dt['asalnya'];?>" required readonly>
+                  </div>
+                <?php } ?>
 
                 <div class="form-group">
                   <label for="exampleInputEmail1">Diterima Tanggal</label>

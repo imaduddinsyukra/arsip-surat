@@ -39,23 +39,37 @@ $dt=mysql_fetch_array($queryy)
 
           <!-- Card Columns Example Social Feed-->
           <div class="mb-0 mt-4">
-            <?php
-              if($kode == '1'){
-                if($kategori_surat=="Surat Masuk"){
-                ?>
-                  <a href="./admin.php?part=data-surat-masuk" class="btn btn-primary mb-3"> <i class="fa fa-fw fa-arrow-left"></i> Kembali</a>
-                  <?php
-                } elseif($kategori_surat=="Surat Keluar"){
-                ?>
-                  <a href="./admin.php?part=data-surat-keluar" class="btn btn-primary mb-3"> <i class="fa fa-fw fa-arrow-left"></i> Kembali</a>
+            <div class="row">
+              <div class="col-6">
                 <?php
-                }
+                  if($kode == '1'){
+                    if($kategori_surat=="Surat Masuk"){
+                    ?>
+                      <a href="./admin.php?part=data-surat-masuk" class="btn btn-primary mb-3"> <i class="fa fa-fw fa-arrow-left"></i> Kembali</a>
+                      <?php
+                    } elseif($kategori_surat=="Surat Keluar"){
+                    ?>
+                      <a href="./admin.php?part=data-surat-keluar" class="btn btn-primary mb-3"> <i class="fa fa-fw fa-arrow-left"></i> Kembali</a>
+                    <?php
+                    }
+                    ?>
+                <?php
+                  } else if($kode == '2'){
                 ?>
-            <?php
-              } else if($kode == '2'){
-            ?>
-              <a href="./admin.php?part=data-disposisi" class="btn btn-primary mb-3"> <i class="fa fa-fw fa-arrow-left"></i> Kembali</a>
-            <?php } ?>
+                  <a href="./admin.php?part=data-disposisi" class="btn btn-primary mb-3"> <i class="fa fa-fw fa-arrow-left"></i> Kembali</a>
+                <?php } ?>
+              </div>
+              <div class="col-6" align="right">
+                <?php if($dt['status_disposisi'] == 'Disetujui'){ ?>
+                  &nbsp;
+                <?php } else { ?>
+                  <a href="admin.php?part=ubah-disposisi&kategori_surat=<?= $kategori_surat;?>&kode=<?= $kode;?>&id_disposisi=<?= $id_disposisi; ?>" class="btn btn-warning mb-3"> <i class="fa fa-fw fa-pencil" style="color: white"></i> <font color="white">Ubah Data</font></a>
+                <?php } ?>
+              </div>
+            </div>
+
+
+
           <div class="card-columns">
 
             <!-- Example Social Card-->

@@ -1,6 +1,6 @@
  <?php
 
-//  error_reporting(0);
+ error_reporting(0);
 include "./assets/conn/koneksi.php";
 
 
@@ -74,6 +74,9 @@ switch ($route) {
       break;
     case 'tambah-disposisi':
         include "views/disposisi/data-disposisi-tambah.php";
+      break;
+    case 'ubah-disposisi':
+        include "views/disposisi/data-disposisi-ubah.php";
       break;
     case 'detail-disposisi':
         include "views/disposisi/data-disposisi-detail.php";
