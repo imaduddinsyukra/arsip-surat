@@ -92,6 +92,37 @@
         
 //==============================================================================
     }
+        elseif($_POST['parm']=='change_status_bos')
+    {
+        $id_user = $_POST['idnya'];
+        $status = $_POST['new_status'];
+    
+        $query = "UPDATE tbl_user SET 
+            status = '$status'
+            WHERE id_user = '$id_user'";
+
+        $hasil = mysql_query($query);
+
+        if ($hasil) { 
+        ?>
+                <script language="JavaScript">
+                    alert("Status Pengguna Berhasil Diubah");
+                    document.location="./admin.php?part=data-pengguna"
+                </script>
+        <?php
+        }
+        else{
+        ?>
+            <script language="JavaScript">
+                alert("Status Pengguna Gagal Diubah");
+                document.location="./admin.php?part=data-pengguna"
+            </script>
+        <?php
+        }
+
+        
+//==============================================================================
+    }
         elseif($_POST['parm']=='delete_bos')
     {
         $id = $_POST['idnya'];

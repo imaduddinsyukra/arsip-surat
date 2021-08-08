@@ -14,21 +14,6 @@
 
         <?php if($_SESSION['level']=="Superadmin"){ ?>
         
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Laporan">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-print"></i>
-            <span class="nav-link-text">Laporan</span>
-          </a>
-          <ul class="sidenav-second-level collapse" id="collapseComponents">
-            <li>
-              <a href="index.php?p=laporan_surat_masuk">Surat Masuk</a>
-            </li>
-            <li>
-              <a href="index.php?p=laporan_surat_keluar">Surat Keluar</a>
-            </li>
-          </ul>
-        </li>
-        
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Jenis Surat">
           <a class="nav-link" href="admin.php?part=data-jenis-surat">
             <i class="fa fa-fw fa-envelope-open"></i>
