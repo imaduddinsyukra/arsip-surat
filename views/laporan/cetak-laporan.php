@@ -4,6 +4,8 @@
     include ("../../assets/conn/koneksi.php");
     
     date_default_timezone_set('Asia/Jakarta');
+    
+    $tgl_cet = date("Y-m-d");
 
     $tgl_mulai = $_GET['tgl_mulai'];
     $tanggal_selesai = $_GET['tgl_selesai'];
@@ -192,6 +194,10 @@
 	$mpdf->AddPage("L","","","","","15","15","15","15","","","","","","","","","","","","A4");
 	// $mpdf->WriteHTML($content);
     $mpdf->WriteHTML($out);
-    $mpdf->Output("Surat Pemberhentian No. $no_surat Tanggal $tgl_surat.pdf", 'I');
+    if($_GET['tgl_mulai']=="" && $_GET['tgl_selesai']==""){
+        $mpdf->Output("Laporan $kat Dicetak Tanggal $tgl_cet.pdf", 'D');
+    } else {
+        $mpdf->Output("Laporan $kat Tanggal $_GET[tgl_mulai] sampai $_GET[tgl_selesai] Dicetak Tanggal $tgl_cet.pdf", 'D');
+    }
 
 ?>
